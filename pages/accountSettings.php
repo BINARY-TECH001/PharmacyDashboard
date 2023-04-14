@@ -1,5 +1,5 @@
 <!-- Sidebar Menu Starts -->
-<?php require_once '../includes/menu.php'; ?>
+<?php require_once '../includes/navMenu.php'; ?>
 <!-- Sidebar Menu Ends -->
 
 <!-- Navbar Starts -->
