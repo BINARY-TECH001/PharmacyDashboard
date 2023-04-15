@@ -44,11 +44,12 @@
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
                                 <select id="defaultSelect" class="form-select">
                                   <option>Choose category</option>
-                                  <option value="tablet">Tablet</option>
-                                  <option value="lotion">Lotion</option>
-                                  <!-- <option value="3"></option> -->
+                                  <option value="depressants"> Depressants </option>
+                                  <option value="hallucinogen"> Hallucinogen </option>
+                                  <option value="stimulants"> Stimulants </option>
                                 </select>
                               </div>
+                            <div class="form-text">The drugs are categotised by the way they affect our bodies...</div>
                           </div>
                         </div>
 

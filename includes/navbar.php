@@ -1,5 +1,10 @@
 
-        <!-- Layout container -->
+<?php 
+    
+   
+?>
+
+       <!-- Layout container -->
         <div class="layout-page">
           <!-- Navbar -->
 
@@ -47,8 +52,8 @@
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">User Name</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block"><?php echo $Session_row['username']; ?></span>
+                            <small class="text-muted"><?php echo $Session_row['role']; ?></small>
                           </div>
                         </div>
                       </a>
@@ -57,7 +62,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="../pages/accountSettings.php">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
                       </a>

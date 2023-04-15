@@ -1,3 +1,14 @@
+<?php require '../includes/session.php' ?>
+
+<?php 
+$conn =new mysqli('localhost','root','','pharmacy');
+
+    $selectUser = mysqli_query($conn,"SELECT * FROM user WHERE username='{$_SESSION['username']}'");
+    $Session_row = mysqli_fetch_array($selectUser);
+?>
+
+
+
 <!DOCTYPE html>
 
 
@@ -64,7 +75,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="../pages/dashboard.php" class="app-brand-link">
                 <!-- COMPANY LOGO -->
               <span class="app-brand-text demo menu-text fw-bolder ms-2"> Al-Miskeen </span>
             </a>
@@ -143,17 +154,12 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-notifications.html" class="menu-link">
+                  <a href="../pages/accountNotifications.php" class="menu-link">
                     <div data-i18n="Notifications">Notifications</div>
                   </a>
                 </li>
-                <li class="menu-item">
-                  <a href="pages-account-settings-connections.html" class="menu-link">
-                    <div data-i18n="Connections">Connections</div>
-                  </a>
-                </li>
               </ul>
-            </li>
+              
 
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -162,7 +168,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="accountSettings.php" class="menu-link">
+                  <a href="addUser.php" class="menu-link">
                     <div data-i18n="Account"> Add New User </div>
                   </a>
                 </li>
@@ -181,7 +187,6 @@
             <li class="menu-item">
               <a
                 href="#"
-                target="_blank"
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons bx bx-support"></i>
@@ -191,7 +196,6 @@
             <li class="menu-item">
               <a
                 href="#"
-                target="_blank"
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons bx bx-file"></i>

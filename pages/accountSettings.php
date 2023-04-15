@@ -10,6 +10,7 @@
 <?php require '../includes/accountSettingsContents.php'; ?>
 
             <div class="content-backdrop fade"></div>
+            
           </div>
           <!-- Content wrapper -->
         </div>
@@ -20,6 +21,8 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
+<?php require "../includes/dashboardFooterFiles.php" ?>
+    
 
 
     <!-- Core JS -->

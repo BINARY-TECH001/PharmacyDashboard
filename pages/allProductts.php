@@ -2,6 +2,7 @@
 
 <?php require '../includes/navbar.php'; ?>
 
+
 <!-- Content wrapper -->
 <div class="content-wrapper">
             <!-- Content -->
@@ -27,8 +28,9 @@
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
                                 <select id="defaultSelect" class="form-select">
                                   <option value="all"> All </option>
-                                  <option value="tablet">Tablet</option>
-                                  <option value="lotion">Lotion</option>
+                                  <option value="tablet"> Depressants </option>
+                                  <option value="lotion"> Hallucinogen </option>
+                                  <option value="lotion"> Stimulants </option>
                                 </select>
                               </div>
                           </div>
@@ -47,44 +49,27 @@
                     <thead>
                       <tr>
                         <th>Product</th>
-                        <th>Client</th>
-                        <th>Users</th>
+                        <th>Quantity</th>
+                        <th>Product Image</th>
                         <th>Availability</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
                       <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
-                        <td>Albert Cook</td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Paracetamol</strong></td>
+                        <td>120 dozens</td>
                         <td>
                           <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                           
                             <li
                               data-bs-toggle="tooltip"
                               data-popup="tooltip-custom"
                               data-bs-placement="top"
                               class="avatar avatar-xs pull-up"
-                              title="Lilian Fuller"
+                              title="Paracetamol"
                             >
                               <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Sophia Wilkerson"
-                            >
-                              <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Christina Parker"
-                            >
-                              <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
                             </li>
                           </ul>
                         </td>
@@ -106,40 +91,23 @@
                         </td>
                       </tr>
                       <tr>
-                        <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>React Project</strong></td>
-                        <td>Barry Hunter</td>
+                        <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong> Vitamin C </strong></td>
+                        <td> 5 cartons </td>
                         <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                          <ul class="list-unstyled users-list m-0 avatar-group d-flex jusdtify-content-center align-items-center">
                             <li
                               data-bs-toggle="tooltip"
                               data-popup="tooltip-custom"
                               data-bs-placement="top"
                               class="avatar avatar-xs pull-up"
-                              title="Lilian Fuller"
-                            >
-                              <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Sophia Wilkerson"
-                            >
-                              <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Christina Parker"
+                              title="Vitamin C"
                             >
                               <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
                             </li>
                           </ul>
                         </td>
-                        <td><span class="badge bg-label-warning me-1"> Average </span></td>
+
+                        <td><span class="badge bg-label-warning me-1"> Almost out of stock </span></td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -157,40 +125,23 @@
                         </td>
                       </tr>
                       <tr>
-                        <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
-                        <td>Trevor Baker</td>
+                        <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong> Ampiclox Tab </strong></td>
+                        <td> 201 cartons </td>
                         <td>
                           <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                           
                             <li
                               data-bs-toggle="tooltip"
                               data-popup="tooltip-custom"
                               data-bs-placement="top"
                               class="avatar avatar-xs pull-up"
-                              title="Lilian Fuller"
-                            >
-                              <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Sophia Wilkerson"
+                              title="Ampiclox Tab"
                             >
                               <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
                             </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Christina Parker"
-                            >
-                              <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                            </li>
                           </ul>
                         </td>
-                        <td><span class="badge bg-label-success me-1">Available</span></td>
+                        <td><span class="badge bg-label-success me-1">In Stock</span></td>
                         <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -209,35 +160,18 @@
                       </tr>
                       <tr>
                         <td>
-                          <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Bootstrap Project</strong>
+                          <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong> Anti Malaria Tab </strong>
                         </td>
-                        <td>Jerry Milton</td>
+                        <td> 0 pieces </td>
                         <td>
                           <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                            
                             <li
                               data-bs-toggle="tooltip"
                               data-popup="tooltip-custom"
                               data-bs-placement="top"
                               class="avatar avatar-xs pull-up"
-                              title="Lilian Fuller"
-                            >
-                              <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Sophia Wilkerson"
-                            >
-                              <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Christina Parker"
+                              title="Anti Malaria Tab"
                             >
                               <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
                             </li>

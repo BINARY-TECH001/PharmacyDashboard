@@ -1,25 +1,19 @@
+<?php require '../includes/navMenu.php'; ?>
+
+<?php require '../includes/navbar.php'; ?>
+
+
 <!-- Content wrapper -->
 <div class="content-wrapper">
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Account</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Add User</h4>
 
               <div class="row">
-                <div class="col-md-12">
-                  <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Account</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="../pages/accountNotifications.php"
-                        ><i class="bx bx-bell me-1"></i> Notifications</a
-                      >
-                    </li>
-                   
-                  </ul>
+               
                   <div class="card mb-4">
-                    <h5 class="card-header">Profile Details</h5>
+                    <h5 class="card-header">Add New User</h5>
                     <!-- Account -->
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
@@ -31,9 +25,10 @@
                           width="100"
                           id="uploadedAvatar"
                         />
+                        <form method="POST">
                         <div class="button-wrapper">
                           <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                            <span class="d-none d-sm-block">Upload new photo</span>
+                            <span class="d-none d-sm-block">Upload profile photo</span>
                             <i class="bx bx-upload d-block d-sm-none"></i>
                             <input
                               type="file"
@@ -55,7 +50,8 @@
                     <hr class="my-0" />
                     <div class="card-body">
 
-                      <form id="formAccountSettings" method="POST">
+
+                      <div id="formAccountSettings" >
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">First Name</label>
@@ -64,13 +60,40 @@
                               type="text"
                               id="firstName"
                               name="firstName"
-                              value= <?php echo $Session_row['firstname']; ?>
                               autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="Abdulrafiu" />
+                            <input class="form-control" type="text" name="lastName" id="lastName"  />
+                          </div>
+                          <div class="mb-3 col-md-6 form-password-toggle">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group input-group-merge">
+                              <input
+                                type="password"
+                                id="password"
+                                class="form-control"
+                                name="password"
+                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                aria-describedby="password"
+                              />
+                              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                          </div>
+                          <div class="mb-3 col-md-6 form-password-toggle">
+                            <label for="password" class="form-label">Confirm Password</label>
+                            <div class="input-group input-group-merge">
+                              <input
+                                type="password"
+                                id="password"
+                                class="form-control"
+                                name="password"
+                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                aria-describedby="password"
+                              />
+                              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
@@ -79,20 +102,18 @@
                               type="text"
                               id="email"
                               name="email"
-                              value= <?php echo $Session_row['email']; ?>
                               placeholder="binary.tech@example.com"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="zipCode" class="form-label">Role</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="zipCode"
-                              name="zipCode"
-                              value=<?php echo $Session_row['role']; ?>
-                              readonly
-                            />
+                            <label for="role" class="form-label">Role</label>
+                            <select id="role" class="select2 form-select" name="role">
+                              <option value="">Select User role</option>
+                              <option value="Admin">Admin</option>
+                              <option value="worker">Worker</option>
+                            </select>
+                            <div class="form-text">The User role determines the type of access user is granted permission to.</div>
+
                           </div>
                           <div class="mb-3 col-md-6">
                             <label class="form-label" for="phoneNumber">Phone Number</label>
@@ -101,20 +122,19 @@
                               <input
                                 type="text"
                                 id="phoneNumber"
-                                name="phoneNumber"
+                                name="number"
                                 class="form-control"
                                 placeholder="905 934 3602"
-                                value=<?php echo $Session_row['number']; ?>
                               />
                             </div>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" placeholder="Address" value=<?php echo $Session_row['address']; ?> />
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="state" class="form-label">State</label>
-                            <input class="form-control" type="text" id="state" name="state" placeholder="Oyo" value=<?php echo $Session_row['state']; ?> />
+                            <input class="form-control" type="text" id="state" name="state" placeholder="Oyo" />
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="zipCode" class="form-label">Zip Code</label>
@@ -125,7 +145,6 @@
                               name="zipCode"
                               placeholder="231465"
                               maxlength="6"
-                              value=<?php echo $Session_row['zipcode']; ?>
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -167,46 +186,21 @@
                               <option value="de">German</option>
                               <option value="pt">Portuguese</option>
                             </select>
-                            
                           </div>
                         </div>
                         <div class="mt-2">
-                          <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                          <button type="submit" name="submit" class="btn btn-primary me-2">Save changes</button>
                           <button type="reset" class="btn btn-outline-secondary">Cancel</button>
                         </div>
-                      </form>
-                    </div>
-                    <!-- /Account -->
-                  </div>
-                  <div class="card">
-                    <h5 class="card-header">Delete Account</h5>
-                    <div class="card-body">
-                      <div class="mb-3 col-12 mb-0">
-                        <div class="alert alert-warning">
-                          <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete your account?</h6>
-                          <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
-                        </div>
                       </div>
-                      <form id="formAccountDeactivation" onsubmit="return false">
-                        <div class="form-check mb-3">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="accountActivation"
-                            id="accountActivation"
-                          />
-                          <label class="form-check-label" for="accountActivation"
-                            >I confirm my account deactivation</label
-                          >
-                        </div>
-                        <button type="submit" class="btn btn-danger deactivate-account">Deactivate Account</button>
-                      </form>
                     </div>
-                  </div>
+                    </form>
+                    <!-- /Account -->
                 </div>
               </div>
             </div>
             <!-- / Content -->
+
             
 <?php require '../includes/dashboardFooter.php'; ?>
 <?php require '../includes/dashboardFooterFiles.php'; ?>
