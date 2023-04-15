@@ -19,6 +19,40 @@
 
                     <div class="card-body">
                       <form>
+                      <div class="card-body">
+                      <div class="d-flex align-items-start align-items-sm-center gap-4">
+                        <img
+                          src="../assets/img/elements/2.jpg"
+                          alt="user-avatar"
+                          class="account-file-input"
+                          height="100"
+                          width="300"
+                          id="uploadedAvatar"
+                        />
+                        <form method="POST" enctype="multipart/form-data">
+                        <div class="button-wrapper">
+                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                            <span class="d-none d-sm-block">Upload Product photo</span>
+                            <i class="bx bx-upload d-block d-sm-none"></i>
+                            <input
+                              type="file"
+                              id="upload"
+                              class="account-file-input"
+                              name="image"
+                              hidden
+                              multiple
+                              accept="image/png, image/jpeg"
+                            />
+                          </label>
+                          <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+                            <i class="bx bx-reset d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Reset</span>
+                          </button>
+
+                          <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                        </div>
+                      </div>
+                    </div>
                         <div class="row form-group mb-3">
                           <div class="col-lg-6">
                             <label class="form-label" for="basic-icon-default-fullname">Product Name</label>
@@ -180,6 +214,9 @@
               </div>
             </div>
             <!-- / Content -->
+
+            <script src="../assets/js/pages-account-settings-account.js"></script>
+
 
 <?php require '../includes/dashboardFooter.php'; ?>
 <?php require '../includes/dashboardFooterFiles.php'; ?>

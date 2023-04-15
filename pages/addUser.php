@@ -1,7 +1,9 @@
 <?php require '../includes/navMenu.php'; ?>
 
 <?php require '../includes/navbar.php'; ?>
+<?php require '../app/functions.php'; ?>
 
+<?php add_User(); ?>
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
@@ -25,7 +27,7 @@
                           width="100"
                           id="uploadedAvatar"
                         />
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                         <div class="button-wrapper">
                           <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                             <span class="d-none d-sm-block">Upload profile photo</span>
@@ -34,7 +36,9 @@
                               type="file"
                               id="upload"
                               class="account-file-input"
+                              name="image"
                               hidden
+                              multiple
                               accept="image/png, image/jpeg"
                             />
                           </label>
@@ -82,15 +86,15 @@
                             </div>
                           </div>
                           <div class="mb-3 col-md-6 form-password-toggle">
-                            <label for="password" class="form-label">Confirm Password</label>
+                            <label for="cpassword" class="form-label">Confirm Password</label>
                             <div class="input-group input-group-merge">
                               <input
                                 type="password"
-                                id="password"
+                                id="cpassword"
                                 class="form-control"
-                                name="password"
+                                name="cpassword"
                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                aria-describedby="password"
+                                aria-describedby="cpassword"
                               />
                               <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             </div>
@@ -120,7 +124,7 @@
                             <div class="input-group input-group-merge">
                               <span class="input-group-text">NG (+234)</span>
                               <input
-                                type="text"
+                                type="number"
                                 id="phoneNumber"
                                 name="number"
                                 class="form-control"
@@ -148,8 +152,8 @@
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label class="form-label" for="country">Country</label>
-                            <select id="country" class="select2 form-select">
+                            <label class="form-label" for="country"> Nationality </label>
+                            <select id="country" class="select2 form-select" name="country">
                               <option value="">Select</option>
                               <option value="Australia">Australia</option>
                               <option value="Bangladesh">Bangladesh</option>
@@ -199,7 +203,13 @@
                 </div>
               </div>
             </div>
+            
             <!-- / Content -->
+
+    <!-- Page JS -->
+    <script src="../assets/js/pages-account-settings-account.js"></script>
+  </body>
+</html>
 
             
 <?php require '../includes/dashboardFooter.php'; ?>

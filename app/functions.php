@@ -44,16 +44,19 @@ function saveLoginDetails(){
     function add_User(){
         global $conn;
         if(isset($conn,$_POST['submit'])){
-            $name = mysqli_real_escape_string($conn,$_POST['name']);
-            $surname = mysqli_real_escape_string($conn,$_POST['surname']);
-            $email = mysqli_real_escape_string($conn,$_POST['email']);
-            $phone = mysqli_real_escape_string($conn,$_POST['phone']); 
-            $username = mysqli_real_escape_string($conn,$_POST['username']); 
+            $firstName = mysqli_real_escape_string($conn,$_POST['firstName']);
+            $lastName = mysqli_real_escape_string($conn,$_POST['lastName']);
             $password = mysqli_real_escape_string($conn,$_POST['password']);
             $cpassword = mysqli_real_escape_string($conn,$_POST['cpassword']);     
-            $permission = mysqli_real_escape_string($conn,$_POST['permission']); 
-            $gender = mysqli_real_escape_string($conn,$_POST['gender']);     
+            $email = mysqli_real_escape_string($conn,$_POST['email']);
+            $role = mysqli_real_escape_string($conn,$_POST['role']); 
+            $number = mysqli_real_escape_string($conn,$_POST['number']); 
+            $address = mysqli_real_escape_string($conn,$_POST['address']); 
+            $state = mysqli_real_escape_string($conn,$_POST['state']); 
+            $zipCode = mysqli_real_escape_string($conn,$_POST['zipCode']);     
+            $country = mysqli_real_escape_string($conn,$_POST['country']);     
             $joined = date("y-m-d");
+            $username = 'rafiu';
             $msg ="";
             
 
@@ -68,9 +71,9 @@ function saveLoginDetails(){
             
               else{ 
             $password=md5($cpassword);
-            $sql_n = "SELECT * FROM users WHERE phone ='$phone'";
+            $sql_n = "SELECT * FROM user WHERE number ='$number'";
             $res_n = mysqli_query($conn, $sql_n);    
-            $sql_e = "SELECT * FROM users WHERE email ='$email'";
+            $sql_e = "SELECT * FROM user WHERE email ='$email'";
             $res_e = mysqli_query($conn, $sql_e);
             if(mysqli_num_rows($res_e) > 0){
             ?>
@@ -83,7 +86,7 @@ function saveLoginDetails(){
             }
             else{      
                   
-            $sql = "INSERT INTO users(name,surname,username,email,joined,permission,gender,phone,password,image)VALUES('$name','$surname','$username','$email','$joined','$permission','$gender','$phone','$password', '$filename')";
+            $sql = "INSERT INTO user (firstname, lastname, password, username, email, role, number, address, state, zipcode, joined, image, country)VALUES('$firstName','$lastName','$password','$username','$email','$role','$number','$address','$state','$zipCode','$joined', '$folder', '$country')";
             $results = mysqli_query($conn,$sql);
                                         
             if(move_uploaded_file($tempname, $folder)){

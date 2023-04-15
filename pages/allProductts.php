@@ -48,6 +48,7 @@
                   <table class="table">
                     <thead>
                       <tr>
+                        <th>#</th>
                         <th>Product</th>
                         <th>Quantity</th>
                         <th>Product Image</th>
@@ -57,6 +58,7 @@
                     </thead>
                     <tbody class="table-border-bottom-0">
                       <tr>
+                        <td>1</td>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Paracetamol</strong></td>
                         <td>120 dozens</td>
                         <td>
@@ -69,7 +71,7 @@
                               class="avatar avatar-xs pull-up"
                               title="Paracetamol"
                             >
-                              <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
+                              <img src="../assets/img/elements/2.jpg" alt="products" class="block" />
                             </li>
                           </ul>
                         </td>
@@ -91,6 +93,7 @@
                         </td>
                       </tr>
                       <tr>
+                        <td>2</td>
                         <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong> Vitamin C </strong></td>
                         <td> 5 cartons </td>
                         <td>
@@ -125,6 +128,7 @@
                         </td>
                       </tr>
                       <tr>
+                        <td>3</td>
                         <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong> Ampiclox Tab </strong></td>
                         <td> 201 cartons </td>
                         <td>
@@ -159,6 +163,7 @@
                         </td>
                       </tr>
                       <tr>
+                        <td>4</td>
                         <td>
                           <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong> Anti Malaria Tab </strong>
                         </td>
