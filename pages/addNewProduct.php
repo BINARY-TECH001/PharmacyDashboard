@@ -2,6 +2,9 @@
 
 <?php require '../includes/navbar.php'; ?>
 
+<?php require '../app/functions.php' ?>
+<?php add_Product(); ?>
+
 <!-- Content wrapper -->
 <div class="content-wrapper">
             <!-- Content -->
@@ -18,21 +21,19 @@
                     </div>
 
                     <div class="card-body">
-                      <form>
-                      <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img
-                          src="../assets/img/elements/2.jpg"
+                          src="../assets/img/elements/3.jpg"
                           alt="user-avatar"
-                          class="account-file-input"
+                          class="d-block rounded"
                           height="100"
-                          width="300"
+                          width="100"
                           id="uploadedAvatar"
                         />
                         <form method="POST" enctype="multipart/form-data">
                         <div class="button-wrapper">
                           <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                            <span class="d-none d-sm-block">Upload Product photo</span>
+                            <span class="d-none d-sm-block">Upload the product Image</span>
                             <i class="bx bx-upload d-block d-sm-none"></i>
                             <input
                               type="file"
@@ -52,7 +53,10 @@
                           <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
                         </div>
                       </div>
-                    </div>
+                  </div>
+                    <hr class="my-0" />
+                    <div class="card-body">
+
                         <div class="row form-group mb-3">
                           <div class="col-lg-6">
                             <label class="form-label" for="basic-icon-default-fullname">Product Name</label>
@@ -68,6 +72,7 @@
                                 aria-label="Paracetamol"
                                 aria-describedby="basic-icon-default-fullname2"
                                 autofocus
+                                name="productName"
                               />
                             </div>
                           </div>
@@ -76,7 +81,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product category</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="defaultSelect" class="form-select">
+                                <select id="defaultSelect" class="form-select" name="productCategory">
                                   <option>Choose category</option>
                                   <option value="depressants"> Depressants </option>
                                   <option value="hallucinogen"> Hallucinogen </option>
@@ -95,7 +100,8 @@
                                 ><i class="bx bx-layer"></i
                               ></span>
                               <input
-                                type="number"
+                                type="text"
+                                name="productQuantity"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
                                 placeholder="12pcs"
@@ -112,6 +118,7 @@
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-dollar"></i></span>
                                 <input
                                 type="number"
+                                name="price"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
                                 placeholder="#000.00"
@@ -133,6 +140,7 @@
                               <input
                                 type="date"
                                 class="form-control"
+                                name="manufactureDate"
                                 id="basic-icon-default-fullname"
                                 placeholder="Manufactured Date"
                                 aria-label="Manufactured Date"
@@ -148,6 +156,7 @@
                                 <input
                                 type="date"
                                 class="form-control"
+                                name="expiryDate"
                                 id="basic-icon-default-fullname"
                                 placeholder="Expiry Date"
                                 aria-label="Expiry Date"
@@ -168,6 +177,7 @@
                               <input
                                 type="text"
                                 class="form-control"
+                                name="manufacturer"
                                 id="basic-icon-default-fullname"
                                 placeholder="Produced by:"
                                 aria-label="Produced by:"
@@ -176,18 +186,19 @@
                             </div>
                           </div>
 
-                          <div class="col-lg-6">
+                          <!-- <div class="col-lg-6">
                             <label class="form-label" for="basic-icon-default-company"> Product Image </label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-file"></i></span>
                                 <input
                                 type="file"
+                                name="image"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
                               </div>
-                          </div>
+                          </div> -->
                         </div>
 
                         <div class="mb-3">
@@ -199,6 +210,7 @@
                             <textarea
                               id="basic-icon-default-message"
                               class="form-control"
+                              name="productDesc"
                               placeholder="Enter the description of the product in details"
                               aria-label="Enter the description of the product in details"
                               aria-describedby="basic-icon-default-message2"
@@ -206,16 +218,17 @@
                             ></textarea>
                           </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Product</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Add Product</button>
                       </form>
-                    </div>
                   </div>
                 </div>
-              </div>
             </div>
+        
+</div>
             <!-- / Content -->
-
             <script src="../assets/js/pages-account-settings-account.js"></script>
+  </body>
+</html>
 
 
 <?php require '../includes/dashboardFooter.php'; ?>

@@ -50,6 +50,7 @@
                       <tr>
                         <th>#</th>
                         <th>Product</th>
+                        <th>ProductId</th>
                         <th>Quantity</th>
                         <th>Product Image</th>
                         <th>Availability</th>
@@ -57,10 +58,18 @@
                       </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
+                    <?php
+                        $serialNum=1;
+                        $query=mysqli_query($conn,"select * from `products` ");
+                         while($row=mysqli_fetch_array($query))
+                            {
+                          
+                      ?>
                       <tr>
-                        <td>1</td>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Paracetamol</strong></td>
-                        <td>120 dozens</td>
+                        <td><?php echo $serialNum; ?></td>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?php echo $row["productName"];?></strong></td>
+                        <td><?php echo $row["productId"];?></td>
+                        <td><?php echo $row["productQuantity"];?></td>
                         <td>
                           <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
                            
@@ -69,9 +78,9 @@
                               data-popup="tooltip-custom"
                               data-bs-placement="top"
                               class="avatar avatar-xs pull-up"
-                              title="Paracetamol"
+                              title="<?php echo $row['productName'] ?>"
                             >
-                              <img src="../assets/img/elements/2.jpg" alt="products" class="block" />
+                              <img src="<?php echo $row['image'] ?>" alt="products" class="block" />
                             </li>
                           </ul>
                         </td>
@@ -93,112 +102,10 @@
                         </td>
                       </tr>
                       <tr>
-                        <td>2</td>
-                        <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong> Vitamin C </strong></td>
-                        <td> 5 cartons </td>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex jusdtify-content-center align-items-center">
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Vitamin C"
-                            >
-                              <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                          </ul>
-                        </td>
+                        
+                      <?php $serialNum++; ?>
 
-                        <td><span class="badge bg-label-warning me-1"> Almost out of stock </span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-2"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong> Ampiclox Tab </strong></td>
-                        <td> 201 cartons </td>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                           
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Ampiclox Tab"
-                            >
-                              <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                          </ul>
-                        </td>
-                        <td><span class="badge bg-label-success me-1">In Stock</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-2"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>
-                          <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong> Anti Malaria Tab </strong>
-                        </td>
-                        <td> 0 pieces </td>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                            
-                            <li
-                              data-bs-toggle="tooltip"
-                              data-popup="tooltip-custom"
-                              data-bs-placement="top"
-                              class="avatar avatar-xs pull-up"
-                              title="Anti Malaria Tab"
-                            >
-                              <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                            </li>
-                          </ul>
-                        </td>
-                        <td><span class="badge bg-label-danger me-1">Out of stock</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-edit-alt me-2"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="javascript:void(0);"
-                                ><i class="bx bx-trash me-2"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+<?php };?>
                     </tbody>
                   </table>
                 </div>

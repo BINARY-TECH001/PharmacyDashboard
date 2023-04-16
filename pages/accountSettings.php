@@ -1,3 +1,6 @@
+<!-- Functions -->
+<?php require "../app/functions.php" ?>
+
 <!-- Sidebar Menu Starts -->
 <?php require_once '../includes/navMenu.php'; ?>
 <!-- Sidebar Menu Ends -->
@@ -7,6 +10,8 @@
 <!-- Navbar Ends -->
 
 <!-- Contents starts -->
+
+<?php update_user(); ?>
 <?php require '../includes/accountSettingsContents.php'; ?>
 
             <div class="content-backdrop fade"></div>

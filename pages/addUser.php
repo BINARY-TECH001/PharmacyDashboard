@@ -56,6 +56,17 @@
 
 
                       <div id="formAccountSettings" >
+                      <div class="row">
+                          <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input
+                              class="form-control"
+                              type="text"
+                              id="username"
+                              name="username"
+                              autofocus
+                            />
+                          </div>
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">First Name</label>

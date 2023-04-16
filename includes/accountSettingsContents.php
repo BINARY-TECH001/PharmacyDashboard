@@ -24,7 +24,7 @@
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img
-                          src="../assets/img/avatars/1.png"
+                          src="<?php echo $Session_row['image']; ?>"
                           alt="user-avatar"
                           class="d-block rounded"
                           height="100"
@@ -41,6 +41,7 @@
                               class="account-file-input"
                               hidden
                               accept="image/png, image/jpeg"
+                              name="image"
                             />
                           </label>
                           <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
@@ -89,7 +90,7 @@
                               type="text"
                               class="form-control"
                               id="zipCode"
-                              name="zipCode"
+                              name="role"
                               value=<?php echo $Session_row['role']; ?>
                               readonly
                             />
@@ -130,7 +131,7 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label class="form-label" for="country">Country</label>
-                            <select id="country" class="select2 form-select">
+                            <select id="country" class="select2 form-select" name="country">
                               <option value="">Select</option>
                               <option value="Australia">Australia</option>
                               <option value="Bangladesh">Bangladesh</option>
@@ -160,7 +161,7 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="language" class="form-label">Language</label>
-                            <select id="language" class="select2 form-select">
+                            <select id="language" class="select2 form-select" name="lang">
                               <option value="">Select Language</option>
                               <option value="en">English</option>
                               <option value="fr">French</option>
@@ -178,6 +179,68 @@
                     </div>
                     <!-- /Account -->
                   </div>
+                </div>
+
+                  <!-- Update user password -->
+                  <div class="card mb-3">
+                    <h5 class="card-header"> Update Password </h5>
+                    <div class="card-body">
+
+                      <form id="formAccountSettings" method="POST">
+                        <div class="row">
+                        <div class="mb-3 form-password-toggle">
+                        <label for="old_password" class="form-label">Old Password</label>
+                            <div class="input-group input-group-merge">
+                              <input
+                                type="password"
+                                id="old_password"
+                                class="form-control"
+                                name="old_password"
+                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                aria-describedby="old_password"
+                              />
+                              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                          </div>
+
+                        <div class="mb-3 col-md-6 form-password-toggle">
+                            <label for="password" class="form-label">New Password</label>
+                            <div class="input-group input-group-merge">
+                              <input
+                                type="password"
+                                id="password"
+                                class="form-control"
+                                name="password"
+                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                aria-describedby="password"
+                              />
+                              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                          </div>
+                          <div class="mb-3 col-md-6 form-password-toggle">
+                            <label for="cpassword" class="form-label">Confirm New Password</label>
+                            <div class="input-group input-group-merge">
+                              <input
+                                type="password"
+                                id="cpassword"
+                                class="form-control"
+                                name="cpassword"
+                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                aria-describedby="cpassword"
+                              />
+                              <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mt-2">
+                          <button type="submit" name="updatePassword" class="btn btn-primary me-2">Save changes</button>
+                          <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                        </div>
+                      </form>
+                    <!-- </div> -->
+                  </div>
+                  </div>
+
                   <div class="card">
                     <h5 class="card-header">Delete Account</h5>
                     <div class="card-body">
@@ -207,6 +270,7 @@
               </div>
             </div>
             <!-- / Content -->
+    <script src="../assets/js/pages-account-settings-account.js"></script>
             
 <?php require '../includes/dashboardFooter.php'; ?>
 <?php require '../includes/dashboardFooterFiles.php'; ?>
