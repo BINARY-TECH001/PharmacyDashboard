@@ -28,7 +28,7 @@ function saveLoginDetails(){
                 $_SESSION["username"]=$db_username;
                 $_SESSION["role"]=$db_role;
                 $_SESSION["number"]=$db_number;
-                $_SESSION["email"] = $db_email;
+                $_SESSION["email"] = $db_email;     
                 $_SESSION["image"] = $db_image;
                 
                 if($_SESSION["role"]=='Admin'  or $_SESSION['role']=='Worker'){
