@@ -62,8 +62,6 @@ $conn =new mysqli('localhost','root','','pharmacy');
     <!-- Helpers -->
     <script src="../assets/vendor/js/helpers.js"></script>
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
   </head>
 
@@ -77,7 +75,7 @@ $conn =new mysqli('localhost','root','','pharmacy');
           <div class="app-brand demo">
             <a href="../pages/dashboard.php" class="app-brand-link">
                 <!-- COMPANY LOGO -->
-              <span class="app-brand-text demo menu-text fw-bolder ms-2"> Al-Miskeen </span>
+              <span class="app-brand-text demo menu-text fw-bolder"> AKOD PHARMS </span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -119,8 +117,7 @@ $conn =new mysqli('localhost','root','','pharmacy');
                   <li class="menu-header small text-uppercase"><span class="menu-header-text"> Order </span></li>
             <li class="menu-item">
               <a
-                href="#"
-                target="_blank"
+                href="../pages/allProductts.php"
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons bx bx-package"></i>
@@ -130,7 +127,6 @@ $conn =new mysqli('localhost','root','','pharmacy');
             <li class="menu-item">
               <a
                 href="#"
-                target="_blank"
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons bx bx-collection"></i>

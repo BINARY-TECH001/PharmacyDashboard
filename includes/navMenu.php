@@ -77,7 +77,7 @@ $conn =new mysqli('localhost','root','','pharmacy');
           <div class="app-brand demo">
             <a href="../pages/dashboard.php" class="app-brand-link">
                     <!-- COMPANY LOGO -->
-              <span class="app-brand-text demo menu-text fw-bolder ms-2"> Al-Miskeen </span>
+              <span class="app-brand-text demo menu-text fw-bolder ms-2"> AKOD PHARMS </span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -119,7 +119,7 @@ $conn =new mysqli('localhost','root','','pharmacy');
                   <li class="menu-header small text-uppercase"><span class="menu-header-text"> Order </span></li>
             <li class="menu-item">
               <a
-                href="#"
+                href="../pages/allProductts.php"
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons bx bx-package"></i>

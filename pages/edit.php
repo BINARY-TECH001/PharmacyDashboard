@@ -2,28 +2,35 @@
 
 <?php require '../includes/navbar.php'; ?>
 
-<?php require '../app/functions.php' ?>
-<?php add_Product(); ?>
+<?php
+     global $conn;
+     $id = $_GET['id'];
+     $select = "select * from products where id='".$id."'";
+     $result = mysqli_query($conn, $select);
+     $row = mysqli_fetch_array($result);
+?>
+
+
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span> Add New Product</h4>
+              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span> Edit Product</h4>
 
               
                 <div class="col-xl">
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                      <h5 class="mb-0"> Add a new product </h5>
+                      <h5 class="mb-0"> Product Id: <?php echo $row['productId']?>  </h5>
                       <small class="text-muted float-end"> Akod Pharmacy </small>
                     </div>
 
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img
-                          src="../assets/img/elements/3.jpg"
+                          src="<?php echo $row['image']?>"
                           alt="user-avatar"
                           class="d-block rounded"
                           height="100"
@@ -33,7 +40,7 @@
                         <form method="POST" enctype="multipart/form-data">
                         <div class="button-wrapper">
                           <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                            <span class="d-none d-sm-block">Upload the product Image</span>
+                            <span class="d-none d-sm-block">Upload New Image</span>
                             <i class="bx bx-upload d-block d-sm-none"></i>
                             <input
                               type="file"
@@ -73,6 +80,7 @@
                                 aria-describedby="basic-icon-default-fullname2"
                                 autofocus
                                 name="productName"
+                                value="<?php echo $row['productName']?>"
                               />
                             </div>
                           </div>
@@ -107,6 +115,7 @@
                                 placeholder="12pcs"
                                 aria-label="12pcs"
                                 aria-describedby="basic-icon-default-fullname2"
+                                value="<?php echo $row['productQuantity']?>"
                               />
                             </div>
                             <div class="form-text">Include the measuring units. i.e cm, litres,dozens,bags...</div>
@@ -117,13 +126,13 @@
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-dollar"></i></span>
                                 <input
-                                type="number"
                                 name="price"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
                                 placeholder="#000.00"
                                 aria-label="price"
                                 aria-describedby="basic-icon-default-fullname2"
+                                value="<?php echo $row['price']?>"
                               />
                               </div>
                             <div class="form-text">Include the price according to the quantity measurement provided.</div>
@@ -145,6 +154,7 @@
                                 placeholder="Manufactured Date"
                                 aria-label="Manufactured Date"
                                 aria-describedby="basic-icon-default-fullname2"
+                                value="<?php echo $row['manufactureDate']?>"
                               />
                             </div>
                           </div>
@@ -161,6 +171,7 @@
                                 placeholder="Expiry Date"
                                 aria-label="Expiry Date"
                                 aria-describedby="basic-icon-default-fullname2"
+                                value="<?php echo $row['expiryDate']?>"
                               />
                               </div>
                           </div>
@@ -182,6 +193,7 @@
                                 placeholder="Produced by:"
                                 aria-label="Produced by:"
                                 aria-describedby="basic-icon-default-fullname2"
+                                value="<?php echo $row['manufacturer']?>"
                               />
                             </div>
                           </div>
@@ -200,11 +212,12 @@
                               placeholder="Enter the description of the product in details"
                               aria-label="Enter the description of the product in details"
                               aria-describedby="basic-icon-default-message2"
+                              value="<?php echo $row['productName']?>"
                               rows="5"
                             ></textarea>
                           </div>
                         </div>
-                        <button type="submit" name="submit" class="btn btn-primary">Add Product</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Update Product</button>
                       </form>
                   </div>
                 </div>
