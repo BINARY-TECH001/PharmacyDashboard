@@ -28,7 +28,7 @@
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0"> Manage Products </h5>
-                      <small class="text-muted float-end"> Akod Pharms </small>
+                      <small class="text-muted float-end"> AL MISKEEN</small>
                     </div>
 
 
@@ -78,8 +78,9 @@
                           </p>
                           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                           <p class="card-text">Pro: <small class="text-muted">Last updated 3 mins ago</small></p>
-                          <a href="orderProduct.php?id=<?php echo $row['id']; ?>" class="card-link btn btn-success"> Make Order Now </a>
+                          <!-- <a href="orderProduct.php?id=<?php echo $row['id']; ?>" class="card-link btn btn-success"> Make Order Now </a> -->
                           <a href="edit.php?id=<?php echo $row['id']; ?>" class="card-link btn btn-primary"> Edit Product </a>
+                          <a href="#" class="card-link btn btn-danger"> Delete Product </a>
                         </div>
                       </div>
                       <div class="col-md-4">

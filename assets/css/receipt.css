@@ -1,0 +1,77 @@
+.pharmacyDetails{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    margin: 0;
+}
+
+.pharmacyDetails h2{
+    margin-bottom: .3em;
+}
+
+.pharmacyDetails span:first-child{
+    margin-top: 0;
+}
+
+.receiptNo{
+    margin-top: .5em;
+    text-align: center;
+}
+
+.discount{
+    display: flex;
+    margin-top: 1em;
+    justify-content: space-between;
+}
+
+.totalPriceCon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto;
+    flex-direction: column;
+    border: 2px solid #4b4b4b;
+    padding: .3em;
+}
+
+.totalPriceCon span{
+    display: block;
+}
+
+.moreInfo{
+    display: flex;
+    flex-direction: column;
+    margin-top: .8em;
+}
+
+.moreInfo .info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.moreInfo .info span:first-child{
+    font-weight: 600;
+}
+
+.claim{
+    margin-top: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.claim p{
+    text-align: center;
+    font-weight: 500;
+}
+
+.claim span{
+    text-align: center;
+    color: rgb(121, 121, 121);
+}

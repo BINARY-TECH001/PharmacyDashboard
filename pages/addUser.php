@@ -17,7 +17,7 @@
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0"> Add a new user </h5>
-                      <small class="text-muted float-end"> Akod Pharmacy </small>
+                      <small class="text-muted float-end"> AL MISKEEN Pharmacy </small>
                     </div>
                     <!-- Account -->
                     <div class="card-body">

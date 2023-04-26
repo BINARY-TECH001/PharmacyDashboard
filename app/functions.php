@@ -195,7 +195,7 @@ function saveLoginDetails(){
             $productCategory = mysqli_real_escape_string($conn,$_POST['productCategory']);
             $productQuantity = mysqli_real_escape_string($conn,$_POST['productQuantity']);
             $price = mysqli_real_escape_string($conn,$_POST['price']);     
-            $price = "#" . $price;
+            // $price = "#" . $price;
             $manufactureDate = mysqli_real_escape_string($conn,$_POST['manufactureDate']);
             $expiryDate = mysqli_real_escape_string($conn,$_POST['expiryDate']); 
             $manufacturer = mysqli_real_escape_string($conn,$_POST['manufacturer']); 

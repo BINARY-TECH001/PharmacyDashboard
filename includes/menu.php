@@ -75,7 +75,7 @@ $conn =new mysqli('localhost','root','','pharmacy');
           <div class="app-brand demo">
             <a href="../pages/dashboard.php" class="app-brand-link">
                 <!-- COMPANY LOGO -->
-              <span class="app-brand-text demo menu-text fw-bolder"> AKOD PHARMS </span>
+              <span class="app-brand-text demo menu-text fw-bolder"> AL MISKEEN</span>
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
