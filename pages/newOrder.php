@@ -37,15 +37,22 @@
                             <label class="form-label" for="basic-icon-default-company">Product 1</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="defaultSelect" class="form-select" name="productCategory">
-                                  <option>Choose Products</option>
-                                  <option value="depressants"> Depressants </option>
-                                  <option value="hallucinogen"> Hallucinogen </option>
-                                  <option value="stimulants"> Stimulants </option>
+                                   <select id="defaultSelect" class="form-select" name="productCategory">
+                                     <option>Choose Products</option>
+                                <?php
+                                   $a=1;
+                                    $query=mysqli_query($conn,"select * from `products` ");
+                                     while($row=mysqli_fetch_array($query))
+                                        {
+                          
+                                ?>
+                                  <option value="depressants"> <?php echo $row['productName']; ?> </option>
+                                  <?php } ?>
                                 </select>
                               </div>
                             <div class="form-text">The drugs are categotised by the way they affect our bodies...</div>
                           </div>
+                          
 
                           <div class="col-lg-6">
                             <label class="form-label" for="basic-icon-default-fullname">Product Quantity</label>
@@ -58,8 +65,8 @@
                                 name="productQuantity"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
-                                placeholder="12pcs"
-                                aria-label="12pcs"
+                                placeholder="12"
+                                aria-label="12"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
                             </div>
@@ -73,10 +80,15 @@
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
                                 <select id="defaultSelect" class="form-select" name="productCategory">
-                                  <option>Choose Products</option>
-                                  <option value="depressants"> Depressants </option>
-                                  <option value="hallucinogen"> Hallucinogen </option>
-                                  <option value="stimulants"> Stimulants </option>
+                                  <option>Choose Products</option> <?php
+                                   $a=1;
+                                    $query=mysqli_query($conn,"select * from `products` ");
+                                     while($row=mysqli_fetch_array($query))
+                                        {
+                          
+                                ?>
+                                  <option value="depressants"> <?php echo $row['productName']; ?> </option>
+                                  <?php } ?>
                                 </select>
                               </div>
                             <div class="form-text">The drugs are categotised by the way they affect our bodies...</div>
@@ -93,8 +105,8 @@
                                 name="productQuantity"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
-                                placeholder="12pcs"
-                                aria-label="12pcs"
+                                placeholder="12"
+                                aria-label="12"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
                             </div>
@@ -107,10 +119,15 @@
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
                                 <select id="defaultSelect" class="form-select" name="productCategory">
-                                  <option>Choose Products</option>
-                                  <option value="depressants"> Depressants </option>
-                                  <option value="hallucinogen"> Hallucinogen </option>
-                                  <option value="stimulants"> Stimulants </option>
+                                  <option>Choose Products</option> <?php
+                                   $a=1;
+                                    $query=mysqli_query($conn,"select * from `products` ");
+                                     while($row=mysqli_fetch_array($query))
+                                        {
+                          
+                                ?>
+                                  <option value="depressants"> <?php echo $row['productName']; ?> </option>
+                                  <?php } ?>
                                 </select>
                               </div>
                             <div class="form-text">The drugs are categotised by the way they affect our bodies...</div>
@@ -127,8 +144,8 @@
                                 name="productQuantity"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
-                                placeholder="12pcs"
-                                aria-label="12pcs"
+                                placeholder="12"
+                                aria-label="12"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
                             </div>
@@ -141,10 +158,15 @@
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
                                 <select id="defaultSelect" class="form-select" name="productCategory">
-                                  <option>Choose Products</option>
-                                  <option value="depressants"> Depressants </option>
-                                  <option value="hallucinogen"> Hallucinogen </option>
-                                  <option value="stimulants"> Stimulants </option>
+                                  <option>Choose Products</option> <?php
+                                   $a=1;
+                                    $query=mysqli_query($conn,"select * from `products` ");
+                                     while($row=mysqli_fetch_array($query))
+                                        {
+                          
+                                ?>
+                                  <option value="depressants"> <?php echo $row['productName']; ?> </option>
+                                  <?php } ?>
                                 </select>
                               </div>
                             <div class="form-text">The drugs are categotised by the way they affect our bodies...</div>
@@ -161,8 +183,8 @@
                                 name="productQuantity"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
-                                placeholder="12pcs"
-                                aria-label="12pcs"
+                                placeholder="12"
+                                aria-label="12"
                                 aria-describedby="basic-icon-default-fullname2"
                               />
                             </div>

@@ -5,15 +5,21 @@
 <style>
   .desc{
     font-size: 1em;
-    color: var(--textColor);
     line-height: 1.6em;
     letter-spacing: .6px;
-    margin-top: .6em;
+    margin: 1.2em 0;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+  }
+  .title{
+    color: #000000;
+    font-weight: 500;
+    margin: 2em 0;
+    letter-spacing: .5px;
+    text-transform: uppercase;
   }
 </style>
 <!-- Content wrapper -->
@@ -73,12 +79,17 @@
                     <div class="row g-0">
                       <div class="col-md-8">
                         <div class="card-body">
-                          <h5 class="card-title"> <?php echo $row["productName"];?> </h5>
+                          <h1 class="card-title"> <?php echo $row["productName"];?> </h1>
                           <p class="card-text desc"><?php echo $row["productDesc"];?>
                           </p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                          <p class="card-text">Pro: <small class="text-muted">Last updated 3 mins ago</small></p>
-                          <!-- <a href="orderProduct.php?id=<?php echo $row['id']; ?>" class="card-link btn btn-success"> Make Order Now </a> -->
+                          <p class="card-text title"> Product Category: <span class="text-muted"><?php echo $row["productCategory"];?> </span></p>
+                          <p class="card-text title"> Available Quantity: <span class="text-muted"><?php echo $row["productQuantity"];?> </span></p>
+                          <p class="card-text title"> Price: <span class="text-muted"><?php echo $row["price"];?> </span></p>
+                          <p class="card-text title"> Manufacture Date: <span class="text-muted"><?php echo $row["manufactureDate"];?> </span></p>
+                          <p class="card-text title"> Expiry Date: <span class="text-muted"><?php echo $row["expiryDate"];?> </span></p>
+                          <p class="card-text title"> Product Manufacturer: <span class="text-muted"><?php echo $row["manufacturer"];?> </span></p>
+                          <!-- <p class="card-text title"> Price: <span class="text-muted"><?php echo $row["price"];?> </span></p> -->
+                          <p class="card-text title"> Product Id: <span class="text-muted"><?php echo $row["productId"];?> </span></p>
                           <a href="edit.php?id=<?php echo $row['id']; ?>" class="card-link btn btn-primary"> Edit Product </a>
                           <a href="#" class="card-link btn btn-danger"> Delete Product </a>
                         </div>
