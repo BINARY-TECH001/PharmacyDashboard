@@ -252,10 +252,15 @@ function update_product(){
 
        $filename = $_FILES['image']['name'];
        $tempname = $_FILES['image']['tmp_name'];
-       $folder = "photos/" . $filename;
+       $folder = "products/" . $filename;
        
        $updateProduct = "UPDATE products SET productName ='$productName', productCategory ='$productCategory', productQuantity ='$productQuantity', price ='$price',manufactureDate='$manufactureDate', expiryDate='$expiryDate', manufacturer='$manufacturer', productDesc='$productDesc', image='$folder' WHERE productId='$productId'";
        $result  = mysqli_query($conn, $updateProduct);
+       if(move_uploaded_file($tempname, $folder)){
+        $msg = "<script>alert('Image Uploaded Successfully')</script>";
+    }else{
+        $msg ="<script>alert('Failed to upload Image')</script>";
+    }
        if($result == 1){
            ?>
        <?php echo "<script>alert('You have updated product successfully')</script>";?>

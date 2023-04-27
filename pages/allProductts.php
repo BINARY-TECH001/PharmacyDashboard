@@ -95,7 +95,7 @@
                         </div>
                       </div>
                       <div class="col-md-4">
-                        <img class="card-img card-img-right" src="<?php echo $row["image"];?>" alt="Card image" />
+                        <img class="card-img card-img-right" src="<?php echo $row["image"];?>" alt="Product Image" />
                       </div>
                     </div>
                   </div>
