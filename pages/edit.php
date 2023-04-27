@@ -1,16 +1,17 @@
 <?php require '../includes/navMenu.php'; ?>
 
 <?php require '../includes/navbar.php'; ?>
+<?php require '../app/functions.php' ?>
 
 <?php
      global $conn;
-     $id = $_GET['id'];
-     $select = "select * from products where id='".$id."'";
+     $productId = $_GET['productId'];
+     $select = "select * from products where productId='".$productId."'";
      $result = mysqli_query($conn, $select);
      $row = mysqli_fetch_array($result);
 ?>
 
-
+<?php update_product(); ?>
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
@@ -24,14 +25,14 @@
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0"> Product Id: <?php echo $row['productId']?>  </h5>
-                      <small class="text-muted float-end"> AL MISKEEN Pharmacy </small>
+                      <small class="text-muted float-end"> AL MISKEEN PHARMACY </small>
                     </div>
 
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img
                           src="<?php echo $row['image']?>"
-                          alt="user-avatar"
+                          alt="Product-Image"
                           class="d-block rounded"
                           height="100"
                           width="100"
@@ -217,7 +218,7 @@
                             ></textarea>
                           </div>
                         </div>
-                        <button type="submit" name="submit" class="btn btn-primary">Update Product</button>
+                        <button type="submit" name="updateProduct" class="btn btn-primary">Update Product</button>
                       </form>
                   </div>
                 </div>

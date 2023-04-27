@@ -235,8 +235,36 @@ function saveLoginDetails(){
 ?>
 
 
+<!-- FUNCTION TO EDIT PRODUCT -->
+<?php 
+function update_product(){
+    global $conn;
+    global $productId;
+    if(isset($conn,$_POST['updateProduct'])){
+       $productName = mysqli_real_escape_string($conn,$_POST['productName']);
+       $productCategory = mysqli_real_escape_string($conn,$_POST['productCategory']);
+       $productQuantity = mysqli_real_escape_string($conn,$_POST['productQuantity']);
+       $price = mysqli_real_escape_string($conn,$_POST['price']);
+       $manufactureDate = mysqli_real_escape_string($conn,$_POST['manufactureDate']);
+       $expiryDate = mysqli_real_escape_string($conn,$_POST['expiryDate']);
+       $manufacturer = mysqli_real_escape_string($conn,$_POST['manufacturer']);
+       $productDesc = mysqli_real_escape_string($conn,$_POST['productDesc']);
 
-
-
-
-
+       $filename = $_FILES['image']['name'];
+       $tempname = $_FILES['image']['tmp_name'];
+       $folder = "photos/" . $filename;
+       
+       $updateProduct = "UPDATE products SET productName ='$productName', productCategory ='$productCategory', productQuantity ='$productQuantity', price ='$price',manufactureDate='$manufactureDate', expiryDate='$expiryDate', manufacturer='$manufacturer', productDesc='$productDesc', image='$folder' WHERE productId='$productId'";
+       $result  = mysqli_query($conn, $updateProduct);
+       if($result == 1){
+           ?>
+       <?php echo "<script>alert('You have updated product successfully')</script>";?>
+       <?php
+       }else{
+       ?>
+       <?php echo "<script>alert('You have updated your profile successfully')</script>";?>
+       <?php
+       }
+       };
+}
+?>

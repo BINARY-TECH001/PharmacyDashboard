@@ -90,7 +90,7 @@
                           <p class="card-text title"> Product Manufacturer: <span class="text-muted"><?php echo $row["manufacturer"];?> </span></p>
                           <!-- <p class="card-text title"> Price: <span class="text-muted"><?php echo $row["price"];?> </span></p> -->
                           <p class="card-text title"> Product Id: <span class="text-muted"><?php echo $row["productId"];?> </span></p>
-                          <a href="edit.php?id=<?php echo $row['id']; ?>" class="card-link btn btn-primary"> Edit Product </a>
+                          <a href="edit.php?productId=<?php echo $row['productId']; ?>" class="card-link btn btn-primary"> Edit Product </a>
                           <a href="#" class="card-link btn btn-danger"> Delete Product </a>
                         </div>
                       </div>

@@ -24,7 +24,7 @@
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img
                           src="../assets/img/elements/3.jpg"
-                          alt="user-avatar"
+                          alt="Product-Image"
                           class="d-block rounded"
                           height="100"
                           width="100"
