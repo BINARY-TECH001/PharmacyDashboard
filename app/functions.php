@@ -273,3 +273,22 @@ function update_product(){
        };
 }
 ?>
+
+
+<!-- FUNCTION TO ADD A NEEW ORDER FOR RECEIPT -->
+<?php 
+function addOrder(){
+    global $conn;
+    global $productId;
+    if(isset($conn,$_POST['submitPrint'])){
+       $product1Name = mysqli_real_escape_string($conn,$_POST['product1Name']);
+       $product1Quantity = mysqli_real_escape_string($conn,$_POST['product1Quantity']);
+       $product2Name = mysqli_real_escape_string($conn,$_POST['product2Name']);
+       $product2Quantity = mysqli_real_escape_string($conn,$_POST['product2Quantity']);
+       $product3Name = mysqli_real_escape_string($conn,$_POST['product3Name']);
+       $product3Quantity = mysqli_real_escape_string($conn,$_POST['product3Quantity']);
+       $product4Name = mysqli_real_escape_string($conn,$_POST['product4Name']);
+       $product4Quantity = mysqli_real_escape_string($conn,$_POST['product4Quantity']);
+    }
+}
+?>

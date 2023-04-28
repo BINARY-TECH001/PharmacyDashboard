@@ -31,21 +31,21 @@
 
               
                 <div class="col-xl">
-                  <div class="card mb-4">
+                  <div class="card mb-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0"> Manage Products </h5>
                       <small class="text-muted float-end"> AL MISKEEN</small>
                     </div>
 
 
-                    <div class="card-body">
-                              <form>
+                    <!-- <div class="card-body">
+                              <form method="POSt">
                                   <div class="row form-group mb-3">
                                   <div class="col-lg-9">
                                     <label class="form-label" for="basic-icon-default-company">Filter Products</label>
                                       <div class="input-group input-group-merge">
                                         <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                        <select id="defaultSelect" class="form-select">
+                                        <select id="defaultSelect" class="form-select" name="productCat">
                                           <option value="all"> All </option>
                                           <option value="tablet"> Depressants </option>
                                           <option value="lotion"> Hallucinogen </option>
@@ -56,18 +56,17 @@
 
                                   <div class="col-lg-3">
                                     <div class="d-grid gap-2 col-lg-10 mt-4 mx-auto">
-                                  <button class="btn btn-primary btn-md" type="button"> Filter </button>
+                                  <button name="filterProducts" class="btn btn-primary btn-md" type="button"> Filter </button>
                                 </div>
                                   </div>
 
                                 </div>
                               </form>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
                       
                 <?php
-                                   $a=1;
                     $query=mysqli_query($conn,"select * from `products` ");
                      while($row=mysqli_fetch_array($query))
                         {
@@ -88,10 +87,9 @@
                           <p class="card-text title"> Manufacture Date: <span class="text-muted"><?php echo $row["manufactureDate"];?> </span></p>
                           <p class="card-text title"> Expiry Date: <span class="text-muted"><?php echo $row["expiryDate"];?> </span></p>
                           <p class="card-text title"> Product Manufacturer: <span class="text-muted"><?php echo $row["manufacturer"];?> </span></p>
-                          <!-- <p class="card-text title"> Price: <span class="text-muted"><?php echo $row["price"];?> </span></p> -->
                           <p class="card-text title"> Product Id: <span class="text-muted"><?php echo $row["productId"];?> </span></p>
                           <a href="edit.php?productId=<?php echo $row['productId']; ?>" class="card-link btn btn-primary"> Edit Product </a>
-                          <a href="#" class="card-link btn btn-danger"> Delete Product </a>
+                          <a href="../includes/deleteProduct.php?productId=<?php echo $row['productId']; ?>" class="card-link btn btn-danger"> Delete Product </a>
                         </div>
                       </div>
                       <div class="col-md-4">

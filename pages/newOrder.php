@@ -3,13 +3,7 @@
 <?php require '../includes/navbar.php'; ?>
 
 <?php
-    //  global $conn;
-    //  $id = $_GET['id'];
-    //  $select = "select * from products where id='".$id."'";
-    //  $result = mysqli_query($conn, $select);
-    //  $row = mysqli_fetch_array($result);
-
-    
+  
 ?>
 
 <link rel="stylesheet" href="../assets/css/receipt.css">
@@ -24,12 +18,17 @@
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span> Order Product</h4>
                 
               <div class="col-xl">
-                  <div class="card mb-4">
+                  <div class="card mb-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0"> New Order </h5>
                       <small class="text-muted float-end"> AL MISKEEN Pharmacy </small>
                     </div>
+                  </div>
+              </div>
             
+            <div class="row mb-3 flex wrap align-items-center justify-content-center">
+            <div class="col-md col-lg wrap">
+            <div class="card mb-3 wrsp">
                     <div class="card-body">
 
                         <div class="row form-group mb-3">
@@ -37,7 +36,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product 1</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                   <select id="defaultSelect" class="form-select" name="productCategory">
+                                   <select id="p1" class="form-select" name="product1Category">
                                      <option>Choose Products</option>
                                 <?php
                                    $a=1;
@@ -62,7 +61,7 @@
                               ></span>
                               <input
                                 type="text"
-                                name="productQuantity"
+                                name="product1Quantity"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
                                 placeholder="12"
@@ -79,7 +78,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product 2</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="defaultSelect" class="form-select" name="productCategory">
+                                <select id="defaultSelect" class="form-select" name="product2Category">
                                   <option>Choose Products</option> <?php
                                    $a=1;
                                     $query=mysqli_query($conn,"select * from `products` ");
@@ -102,7 +101,7 @@
                               ></span>
                               <input
                                 type="text"
-                                name="productQuantity"
+                                name="product2Quantity"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
                                 placeholder="12"
@@ -118,7 +117,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product 3</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="defaultSelect" class="form-select" name="productCategory">
+                                <select id="defaultSelect" class="form-select" name="product3Category">
                                   <option>Choose Products</option> <?php
                                    $a=1;
                                     $query=mysqli_query($conn,"select * from `products` ");
@@ -141,7 +140,7 @@
                               ></span>
                               <input
                                 type="text"
-                                name="productQuantity"
+                                name="product3Quantity"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
                                 placeholder="12"
@@ -157,7 +156,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product 4</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="defaultSelect" class="form-select" name="productCategory">
+                                <select id="defaultSelect" class="form-select" name="product4Category">
                                   <option>Choose Products</option> <?php
                                    $a=1;
                                     $query=mysqli_query($conn,"select * from `products` ");
@@ -180,7 +179,7 @@
                               ></span>
                               <input
                                 type="text"
-                                name="productQuantity"
+                                name="product4Quantity"
                                 class="form-control"
                                 id="basic-icon-default-fullname"
                                 placeholder="12"
@@ -193,14 +192,18 @@
                         </div>
                         
                         <button 
-                        name="submit" 
+                        name="submitPrint" 
                         class="btn btn-primary"
                         type="button"
-                          class="btn btn-primary"
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalCenter"
-                        > Receipt </button>
+                        > Done </button>
                       </form>
+                      
+                      <button 
+                      class="btn btn-secondary"
+                      type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalCenter"
+                      > Show Receipt </button>
                     </div>
 
                 </div>
@@ -279,7 +282,7 @@
                                     </div>
                                     <div class="info">
                                         <span> Cashier </span>
-                                        <span> Mubarak </span>
+                                        <span> <?php echo $Session_row['firstname']; ?> </span>
                                     </div>
                                     <div class="info">
                                         <span> Cash Payment </span>
@@ -312,4 +315,3 @@
 
 <?php require '../includes/dashboardFooter.php'; ?>
 <?php require '../includes/dashboardFooterFiles.php'; ?>
-

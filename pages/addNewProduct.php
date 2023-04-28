@@ -14,17 +14,19 @@
 
               
                 <div class="col-xl">
-                  <div class="card mb-4">
+                  <div class="card mb-3">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5 class="mb-0"> Add a new product </h5>
                       <small class="text-muted float-end"> AL MISKEEN Pharmacy </small>
                     </div>
+                  </div>
 
+                  <div class="card mb-4">
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img
                           src="../assets/img/elements/3.jpg"
-                          alt="Product-Image"
+                          alt="Product-Imagea"
                           class="d-block rounded"
                           height="100"
                           width="100"
