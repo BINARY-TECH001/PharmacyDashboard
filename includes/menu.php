@@ -126,7 +126,7 @@ $conn =new mysqli('localhost','root','','pharmacy');
             </li>
             <li class="menu-item">
               <a
-                href="#"
+                href="../pages/manageOrder.php"
                 class="menu-link"
               >
                 <i class="menu-icon tf-icons bx bx-collection"></i>
@@ -170,7 +170,7 @@ $conn =new mysqli('localhost','root','','pharmacy');
                 </li>
 
                 <li class="menu-item">
-                  <a href="pages-account-settings-notifications.html" class="menu-link">
+                  <a href="../pages/manageUser.php" class="menu-link">
                     <div data-i18n="Notifications"> Manage All User </div>
                   </a>
                 </li>

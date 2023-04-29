@@ -2,7 +2,9 @@
 <?php
 // FUNCTION TO VALIDATE LOGIN STARTS HERE
 $conn = new mysqli('localhost','root','','pharmacy');
-
+if ($conn -> connect_error){
+    die("Connection Failed! " . $conn->connect_error);
+}
 // FUNCTION TO VALIDATE AND LOGIN USER
 function saveLoginDetails(){
     global $conn;
@@ -289,6 +291,10 @@ function addOrder(){
        $product3Quantity = mysqli_real_escape_string($conn,$_POST['product3Quantity']);
        $product4Name = mysqli_real_escape_string($conn,$_POST['product4Name']);
        $product4Quantity = mysqli_real_escape_string($conn,$_POST['product4Quantity']);
+
+       $sql = "INSERT INTO productorder (productName, productCategory, productQuantity, price, manufactureDate, expiryDate, manufacturer, productDesc, dateAdded, productId, image)VALUES('$productName','$productCategory','$productQuantity','$price','$manufactureDate','$expiryDate','$manufacturer','$productDesc','$dateAdded','$productId', '$folder')";
+       $results = mysqli_query($conn,$sql);
     }
 }
 ?>
+

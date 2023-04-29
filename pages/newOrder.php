@@ -45,7 +45,7 @@
                                         {
                           
                                 ?>
-                                  <option value="depressants"> <?php echo $row['productName']; ?> </option>
+                                  <option value="<?php echo $row['productName']; ?>"> <?php echo $row['productName']; ?> </option>
                                   <?php } ?>
                                 </select>
                               </div>
@@ -86,7 +86,7 @@
                                         {
                           
                                 ?>
-                                  <option value="depressants"> <?php echo $row['productName']; ?> </option>
+                                  <option value="<?php echo $row['productName']; ?>"> <?php echo $row['productName']; ?> </option>
                                   <?php } ?>
                                 </select>
                               </div>
@@ -125,7 +125,7 @@
                                         {
                           
                                 ?>
-                                  <option value="depressants"> <?php echo $row['productName']; ?> </option>
+                                  <option value="<?php echo $row['productName']; ?>"> <?php echo $row['productName']; ?> </option>
                                   <?php } ?>
                                 </select>
                               </div>
@@ -156,7 +156,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product 4</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="defaultSelect" class="form-select" name="product4Category">
+                                <select id="select4" class="form-select" name="product4Category">
                                   <option>Choose Products</option> <?php
                                    $a=1;
                                     $query=mysqli_query($conn,"select * from `products` ");
@@ -164,7 +164,7 @@
                                         {
                           
                                 ?>
-                                  <option value="depressants"> <?php echo $row['productName']; ?> </option>
+                                  <option value="<?php echo $row['productName']; ?>"> <?php echo $row['productName']; ?> </option>
                                   <?php } ?>
                                 </select>
                               </div>
@@ -247,17 +247,17 @@
                                             <tbody class="">
                                             <tr>
                                                 <td> 1pcs </td>
-                                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong> Paracetamol Tab </strong></td>
+                                                <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> Paracetamol Tab </strong></td>
                                                 <td> 300.00 </td>
                                             </tr>
                                             <tr>
                                                 <td> 1pcs </td>
-                                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong> Paracetamol Tab </strong></td>
+                                                <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> Paracetamol Tab </strong></td>
                                                 <td> 300.00 </td>
                                             </tr>
                                             <tr>
                                                 <td> 1pcs </td>
-                                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong> Paracetamol Tab </strong></td>
+                                                <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> Paracetamol Tab </strong></td>
                                                 <td> 300.00 </td>
                                             </tr>
                                             </tbody>
@@ -315,3 +315,9 @@
 
 <?php require '../includes/dashboardFooter.php'; ?>
 <?php require '../includes/dashboardFooterFiles.php'; ?>
+
+<script>
+  document.getElementById('select4').addEventListener('change', function(){
+    console.log('You selected', this.value)
+  })
+</script>
