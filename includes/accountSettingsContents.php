@@ -21,6 +21,7 @@
                   <div class="card mb-4">
                     <h5 class="card-header">Profile Details</h5>
                     <!-- Account -->
+                    <form id="formAccountSettings" method="POST" enctype="multipart/form-data">
                     <div class="card-body">
                       <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img
@@ -56,7 +57,6 @@
                     <hr class="my-0" />
                     <div class="card-body">
 
-                      <form id="formAccountSettings" method="POST">
                         <div class="row">
                           <div class="mb-3 col-md-6">
                             <label for="firstName" class="form-label">First Name</label>
@@ -77,7 +77,7 @@
                             <label for="email" class="form-label">E-mail</label>
                             <input
                               class="form-control"
-                              type="text"
+                              type="email"
                               id="email"
                               name="email"
                               value= <?php echo $Session_row['email']; ?>
@@ -89,7 +89,7 @@
                             <input
                               type="text"
                               class="form-control"
-                              id="zipCode"
+                              id="role"
                               name="role"
                               value=<?php echo $Session_row['role']; ?>
                               readonly
@@ -159,7 +159,7 @@
                               <option value="United States">United States</option>
                             </select>
                           </div>
-                          <div class="mb-3 col-md-6">
+                          <!-- <div class="mb-3 col-md-6">
                             <label for="language" class="form-label">Language</label>
                             <select id="language" class="select2 form-select" name="lang">
                               <option value="">Select Language</option>
@@ -169,10 +169,10 @@
                               <option value="pt">Portuguese</option>
                             </select>
                             
-                          </div>
+                          </div> -->
                         </div>
                         <div class="mt-2">
-                          <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                          <button type="submit" name="updateUserDetails" class="btn btn-primary me-2">Save changes</button>
                           <button type="reset" class="btn btn-outline-secondary">Cancel</button>
                         </div>
                       </form>

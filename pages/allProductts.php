@@ -67,6 +67,7 @@
                 </div>
                       
                 <?php
+                               $a=1;
                     $query=mysqli_query($conn,"select * from `products` ");
                      while($row=mysqli_fetch_array($query))
                         {
@@ -81,13 +82,13 @@
                           <h1 class="card-title"> <?php echo $row["productName"];?> </h1>
                           <p class="card-text desc"><?php echo $row["productDesc"];?>
                           </p>
+                          <p class="card-text title"> Product Id: <span class="text-muted"><?php echo $row["productId"];?> </span></p>
                           <p class="card-text title"> Product Category: <span class="text-muted"><?php echo $row["productCategory"];?> </span></p>
                           <p class="card-text title"> Available Quantity: <span class="text-muted"><?php echo $row["productQuantity"];?> </span></p>
                           <p class="card-text title"> Price: <span class="text-muted"><?php echo $row["price"];?> </span></p>
                           <p class="card-text title"> Manufacture Date: <span class="text-muted"><?php echo $row["manufactureDate"];?> </span></p>
                           <p class="card-text title"> Expiry Date: <span class="text-muted"><?php echo $row["expiryDate"];?> </span></p>
                           <p class="card-text title"> Product Manufacturer: <span class="text-muted"><?php echo $row["manufacturer"];?> </span></p>
-                          <p class="card-text title"> Product Id: <span class="text-muted"><?php echo $row["productId"];?> </span></p>
                           <a href="edit.php?productId=<?php echo $row['productId']; ?>" class="card-link btn btn-primary"> Edit Product </a>
                           <a href="../includes/deleteProduct.php?productId=<?php echo $row['productId']; ?>" class="card-link btn btn-danger"> Delete Product </a>
                         </div>
@@ -98,8 +99,13 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <?php } ?>
+                <?php } ?>
+                
+                <?php if ($row > -1){
+                  echo '<div class="row mt-5 flex wrap align-items-center justify-content-center"> No Product Available!
+                  </div>';
+                } ?>
+                </div>
 
               
  

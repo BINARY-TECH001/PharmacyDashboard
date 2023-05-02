@@ -2,6 +2,8 @@
 
 <?php require '../includes/navbar.php'; ?>
 
+<link rel="stylesheet" href="../assets/css/modal.css">
+
 <!-- Content wrapper -->
 <div class="content-wrapper">
             <!-- Content -->
@@ -96,17 +98,12 @@
 
             <!-- MyModal -->
             <div id="modal">
-                <div id="modal-content">
 
-                </div>
             </div>
 
- 
-
+            
             
 <!-- FUNCTON TO DISPLAY USER MODAL -->
-
-
 
 
 
@@ -135,20 +132,55 @@
             console.log('Error sending request')
         }
         xhr.send(formData);
+      }
+      
+      const displayDataModal = (data) => {
+        const { firstname, role, lastname, id, image, email, country, state, username, address, number } = data;
+        
+        modal.innerHTML = `<div class="modalCon">
+        <div class="modal-content">
+        <div class="imageCon">
+        <img src=${image} alt="User Image">
+        </div>
+        
+        <div class="userInfo">
+          <div class="info">
+            <p> <strong>FullName:</strong> ${lastname} ${firstname}</p>
+            <p> <strong>Username:</strong> ${username} </p>
+          </div>
+
+          <div class="info">
+            <p> <strong>Email:</strong> ${email} </p>     
+            <p> <strong>number:</strong> ${number} </p>  
+          </div>
+
+          <div class="info">
+            <p> <strong>Address:</strong> ${address} </p>  
+            <p> <strong>country:</strong> ${country} </p>
+          </div>
+
+          <div class="info">
+            <p> <strong>state:</strong> ${state} </p>
+            <p> <strong>role:</strong> ${role} </p>
+    
+          </div>
+
+            
+            <div class="buttonCon">
+                  <button type="button" onclick="closeModal()" class="btn btn-primary">
+                    Close
+                  </button>
+            </div>
+          </div>
+          
+        </div>
+
+        `;
+        modal.style.visibility = "visible";
     }
 
-    const displayDataModal = (data) => {
-      const { firstname, lastname, id } = data;
-  
-        modal.innerHTML = `<div class="articles">
-        <div>
-            <h4>${firstname}</h4>
-            <p>
-              ${lastname}
-            </p>
-          </div>
-        </div>`;
-        modal.style.display = "block";
+    function closeModal(){
+      modal.style.visibility = "hidden";
     }
 </script>
 <script src="../assets/js/pages-account-settings-account.js"></script>

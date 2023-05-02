@@ -154,36 +154,42 @@ function saveLoginDetails(){
                   
     }
 
-};
+    
+    // UPDATE USER INFORMATION
+    
+        if(isset($conn,$_POST['updateUserDetails'])){
+            $firstName = mysqli_real_escape_string($conn,$_POST['firstName']);
+            $lastName = mysqli_real_escape_string($conn,$_POST['lastName']);
+            $phoneNumber = mysqli_real_escape_string($conn,$_POST['phoneNumber']);
+            $email = mysqli_real_escape_string($conn,$_POST['email']);
+            $address = mysqli_real_escape_string($conn,$_POST['address']);
+            $state = mysqli_real_escape_string($conn,$_POST['state']);
+            $country = mysqli_real_escape_string($conn,$_POST['country']);
+            $zipCode = mysqli_real_escape_string($conn,$_POST['zipCode']);
+    
+            $filename = $_FILES['image']['name'];
+            $tempname = $_FILES['image']['tmp_name'];
+            $folder = "photos/" . $filename;
+            
+            $update_user = "UPDATE user SET firstname ='$firstName', lastname ='$lastName',number ='$phoneNumber', email ='$email', address ='$address', state='$state',country='$country', zipcode='$zipCode', image='$folder' WHERE username= '{$_SESSION['username']}'";
+            if(move_uploaded_file($tempname, $folder)){
+                $msg = "<script>alert('Image Uploaded Successfully')</script>";
+            }else{
+                $msg ="<script>alert('Failed to upload Image')</script>";
+            }
 
-// UPDATE USER INFORMATION
-
-    if(isset($conn,$_POST['update'])){
-        $firstName = mysqli_real_escape_string($conn,$_POST['firstName']);
-        $lastName = mysqli_real_escape_string($conn,$_POST['lastName']);
-        $phoneNumber = mysqli_real_escape_string($conn,$_POST['phoneNumber']);
-        $address = mysqli_real_escape_string($conn,$_POST['address']);
-        $state = mysqli_real_escape_string($conn,$_POST['state']);
-        $country = mysqli_real_escape_string($conn,$_POST['country']);
-        $zipCode = mysqli_real_escape_string($conn,$_POST['zipCode']);
-        $lang = mysqli_real_escape_string($conn,$_POST['lang']);
-
-        $filename = $_FILES['image']['name'];
-        $tempname = $_FILES['image']['tmp_name'];
-        $folder = "photos/" . $filename;
-        
-        $update_user = "UPDATE users SET name ='$name', surname ='$surname', phone ='$phone', email ='$email' WHERE username= '{$_SESSION['username']}'";
-        $result  = mysqli_query($conn, $update_user);
-        if($result == 1){
+            $result  = mysqli_query($conn, $update_user);
+            if($result == 1){
+                ?>
+            <?php echo "<script>alert('You have updated your profile successfully')</script>";?>
+            <?php
+            }else{
             ?>
-        <?php echo "<script>alert('You have updated your profile successfully')</script>";?>
-        <?php
-        }else{
-        ?>
-        <?php echo "<script>alert('You have updated your profile successfully')</script>";?>
-        <?php
-        }
-        };
+            <?php echo "<script>alert('You have updated your profile successfully')</script>";?>
+            <?php
+            }
+            };
+};
 ?>
 
 
@@ -269,7 +275,7 @@ function update_product(){
        <?php
        }else{
        ?>
-       <?php echo "<script>alert('You have updated your profile successfully')</script>";?>
+       <?php echo "<script>alert('Error Updating Profile')</script>";?>
        <?php
        }
        };
@@ -281,7 +287,6 @@ function update_product(){
 <?php 
 function addOrder(){
     global $conn;
-    global $productId;
     if(isset($conn,$_POST['submitPrint'])){
        $product1Name = mysqli_real_escape_string($conn,$_POST['product1Name']);
        $product1Quantity = mysqli_real_escape_string($conn,$_POST['product1Quantity']);
@@ -291,9 +296,23 @@ function addOrder(){
        $product3Quantity = mysqli_real_escape_string($conn,$_POST['product3Quantity']);
        $product4Name = mysqli_real_escape_string($conn,$_POST['product4Name']);
        $product4Quantity = mysqli_real_escape_string($conn,$_POST['product4Quantity']);
+       $randomNum = rand(9999,1000);    
+       $orderDate = date('D M Y');
+       $orderTime = date('H i s');
+       $OrderId = date("Y") . date("d")  . $randomNum;  
 
-       $sql = "INSERT INTO productorder (productName, productCategory, productQuantity, price, manufactureDate, expiryDate, manufacturer, productDesc, dateAdded, productId, image)VALUES('$productName','$productCategory','$productQuantity','$price','$manufactureDate','$expiryDate','$manufacturer','$productDesc','$dateAdded','$productId', '$folder')";
-       $results = mysqli_query($conn,$sql);
+       $sql = "INSERT INTO productorder (product1Name, product1Qty, product2Name,product2Qty, product3Name, product3Qty, product4Name, product4Qty, OrderId,orderDate,orderTime) VALUES ('$product1Name','$product1Quantity','$product2Name','$product2Quantity','$product3Name','$product3Quantity','$product4Name','$product4Quantity', '$OrderId', '$orderDate','$orderTime')";
+       $result = mysqli_query($conn,$sql);
+
+       if($result == 1){
+        ?>
+        <?php echo "<script>alert('Order Added Successfully')</script>";?>
+        <?php
+        }else{
+        ?>
+        <?php echo "<script>alert('Error adding Order')</script>";?>
+        <?php
+    }
     }
 }
 ?>

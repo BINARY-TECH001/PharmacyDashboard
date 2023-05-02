@@ -1,9 +1,10 @@
 <?php require '../includes/navMenu.php'; ?>
 
 <?php require '../includes/navbar.php'; ?>
+<?php require "../app/functions.php" ?>
 
 <?php
-  
+  addOrder();
 ?>
 
 <link rel="stylesheet" href="../assets/css/receipt.css">
@@ -31,12 +32,13 @@
             <div class="card mb-3 wrsp">
                     <div class="card-body">
 
+                    <form class="row form-group mb-3" method="POST">
                         <div class="row form-group mb-3">
                         <div class="col-lg-6">
                             <label class="form-label" for="basic-icon-default-company">Product 1</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                   <select id="p1" class="form-select" name="product1Category">
+                                   <select class="form-select" name="product1Name">
                                      <option>Choose Products</option>
                                 <?php
                                    $a=1;
@@ -78,7 +80,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product 2</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="defaultSelect" class="form-select" name="product2Category">
+                                <select id="defaultSelect" class="form-select" name="product2Name">
                                   <option>Choose Products</option> <?php
                                    $a=1;
                                     $query=mysqli_query($conn,"select * from `products` ");
@@ -117,7 +119,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product 3</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="defaultSelect" class="form-select" name="product3Category">
+                                <select id="defaultSelect" class="form-select" name="product3Name">
                                   <option>Choose Products</option> <?php
                                    $a=1;
                                     $query=mysqli_query($conn,"select * from `products` ");
@@ -156,7 +158,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product 4</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="select4" class="form-select" name="product4Category">
+                                <select id="select4" class="form-select" name="product4Name">
                                   <option>Choose Products</option> <?php
                                    $a=1;
                                     $query=mysqli_query($conn,"select * from `products` ");
@@ -193,16 +195,15 @@
                         
                         <button 
                         name="submitPrint" 
-                        class="btn btn-primary"
-                        type="button"
+                        class="btn btn-primary mt-3"
                         > Done </button>
-                      </form>
-                      
+                    </form>
                       <button 
                       class="btn btn-secondary"
                       type="button"
                         data-bs-toggle="modal"
                         data-bs-target="#modalCenter"
+                        onclick="getData()"
                       > Show Receipt </button>
                     </div>
 
@@ -210,6 +211,7 @@
             </div>
         
 </div>
+
   <!-- Modal -->
   <div class="modal fade" id="modalCenter" tabindex="-1" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -317,7 +319,10 @@
 <?php require '../includes/dashboardFooterFiles.php'; ?>
 
 <script>
-  document.getElementById('select4').addEventListener('change', function(){
-    console.log('You selected', this.value)
-  })
+    var modal = document.getElementById('modalCenter');
+
+
+    function closeModal(){
+      modal.style.visibility = "hidden";
+    }
 </script>

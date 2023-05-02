@@ -18,10 +18,15 @@ if ($conn -> connect_errno){
         $role = $row['role'];
         $firstname = $row['firstname'];
         $lastname = $row['lastname'];
+        $username = $row['username'];
         $image = $row['image'];
+        $number = $row['number'];
+        $address = $row['address'];
         $email = $row['email'];
+        $country = $row['country'];
+        $state = $row['state'];
 
-        $response = array('status' => 'success', 'role' => $role, 'firstname' => $firstname, 'lastname' => $lastname, 'image' => $image, 'id' => $id, 'email'=>$email);
+        $response = array('status' => 'success', 'address' => $address, 'country' => $country, 'state'=>$state, 'number'=>$number, 'username' => $username, 'role' => $role, 'firstname' => $firstname, 'lastname' => $lastname, 'image' => $image, 'id' => $id, 'email'=>$email);
 
     }
 
