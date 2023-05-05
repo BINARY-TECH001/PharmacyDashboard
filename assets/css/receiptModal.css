@@ -8,9 +8,16 @@
     display: none;
     overflow-x: hidden;
     overflow-y: auto;
+    background: rgba(67, 89, 113, 0.45);
 }
 
 #wrap{
+    position: relative !important;
+    z-index: 1;
+}
+
+
+#layout-navbar{
     position: relative !important;
     z-index: 1;
 }

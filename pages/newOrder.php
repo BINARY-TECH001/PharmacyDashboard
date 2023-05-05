@@ -61,7 +61,7 @@
                                 ><i class="bx bx-layer"></i
                               ></span>
                               <input
-                                type="text"
+                                type="number"
                                 name="product1Quantity"
                                 class="form-control"
                                 id="Quantity1"
@@ -101,7 +101,7 @@
                                 ><i class="bx bx-layer"></i
                               ></span>
                               <input
-                                type="text"
+                                type="number"
                                 name="product2Quantity"
                                 class="form-control"
                                 id="Quantity2"
@@ -140,7 +140,7 @@
                                 ><i class="bx bx-layer"></i
                               ></span>
                               <input
-                                type="text"
+                                type="number"
                                 name="product3Quantity"
                                 class="form-control"
                                 id="Quantity3"
@@ -179,7 +179,7 @@
                                 ><i class="bx bx-layer"></i
                               ></span>
                               <input
-                                type="text"
+                                type="number"
                                 name="product4Quantity"
                                 class="form-control"
                                 id="Quantity4"
@@ -252,9 +252,39 @@
                               }
                             };
 
-                          console.log(data.product1.Qty1)
+                            if(data.product1.Qty1 == ''){
+                              data.product1.Qty1 = '-';
+                            }
+                            if(data.product2.Qty2 == ''){
+                              data.product2.Qty2 = '-';
+                            }
+                            if(data.product3.Qty3 == ''){
+                              data.product3.Qty3 = '-';
+                            }
+                            if(data.product4.Qty4 == ''){
+                              data.product4.Qty4 = '-';
+                            }
+
+                            // CHECK THE PRODUCT
+                            if(data.product1.select1 == 'Choose Products'){
+                              data.product1.select1 = '-';
+                            }
+                            if(data.product2.select2 == 'Choose Products'){
+                              data.product2.select2 = '-';
+                            }
+                            if(data.product3.select3 == 'Choose Products'){
+                              data.product3.select3 = '-';
+                            }
+                            if(data.product4.select4 == 'Choose Products'){
+                              data.product4.select4 = '-';
+                            }
+
+                            var rand = Math.floor(Math.random() * 1 );
+                            var date = new Date();
+                            var seconds = date.getSeconds();
+                            var minute = date.getMinutes();
+                            var hour = date.getHours();
                             
-                        
                             modal.innerHTML = `
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
@@ -262,8 +292,7 @@
                                                       <button
                                                         type="button"
                                                         class="btn-close"
-                                                        data-bs-dismiss="modal"
-                                                        aria-label="Close"
+                                                        onclick="closeModal()"
                                                       ></button>
                                                     </div>
                       
@@ -276,7 +305,11 @@
                                                       </div>
                       
                                                       <div class="receiptNo">
-                                                          <p> RECEIPT NO: <b> B60510 </b> ${Qty} </p>
+                                                      <?php
+                                                         $randomNum = rand(99,10);    
+                                                         $productId = date("Y") . date("d")  . $randomNum;  
+                                                      ?>
+                                                          <p> RECEIPT ID: <b> <?php echo $productId ?> </b></p>
                                                       </div>
                                                           <div class="card">
                                                               <div class="table-responsive text-nowrap">
@@ -292,13 +325,7 @@
                                                                   <tr>
                                                                       <td> ${data.product1.Qty1} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product1.select1} </strong></td>
-                                                                      <?php 
-// $conn =new mysqli('localhost','root','','pharmacy');
-
-//     $selectUser = mysqli_query($conn,"SELECT * FROM products WHERE username='{$_SESSION['username']}'");
-//     $Session_row = mysqli_fetch_array($selectUser);
-// ?>
-                                                                      <td><?php echo $Session_row['username']; ?> </td>
+                                                                      <td> 300.00 </td>
                                                                   </tr>
                                                                   <tr>
                                                                       <td> ${data.product2.Qty2} </td>
@@ -308,12 +335,12 @@
                                                                   <tr>
                                                                       <td> ${data.product3.Qty3} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product3.select3} </strong></td>
-                                                                      <td> 300 </td>
+                                                                      <td> 300.00 </td>
                                                                   </tr>
                                                                   <tr>
                                                                       <td> ${data.product4.Qty4} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product4.select4} </strong></td>
-                                                                      <td> 300 </td>
+                                                                      <td> 300.00 </td>
                                                                   </tr>
                                                                   </tbody>
                                                                 </table>
@@ -335,7 +362,7 @@
                                                               <span> Transaction time </span>
                                                               <span><?php echo date('l'); ?>, <?php echo date(
   'M'
-); ?>, <?php echo date('Y'); ?>. <?php echo date('h'); ?> : <?php echo date('i'); ?> : <?php echo date('s'); ?></span>
+); ?>, <?php echo date('Y'); ?>. ${hour} : ${minute} : ${seconds}</span>
                                                           </div>
                                                           <div class="info">
                                                               <span> Cashier </span>
@@ -352,16 +379,14 @@
                                                       </div>
                       
                                                       <div class="claim">
-                                                          <p> GOODS BOUGHT IN GOOD CONDITION ARE UNRETURNABLE. THANKS FOR YOUR PATRONAGE. </p>
-                                                          <span><?php echo date('l'); ?>, <?php echo date(
-  'M'
-); ?>, <?php echo date('Y'); ?>. <?php echo date('H'); ?> : <?php echo date('i'); ?> : <?php echo date('s'); ?></span>
+                                                          <p> GOODS BOUGHT IN GOOD CONDITION ARE UNRETURNABLE. </p>
+                                                          <b>THANKS FOR YOUR PATRONAGE.</b>
                                                       </div>
                                                     </div>
                       
                                                     <div class="modal-footer">
-                                                      <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                                                        Close
+                                                      <button type="button" class="btn btn-outline-secondary" onclick="closeModal()">
+                                                        Save Receipt
                                                       </button>
                                                       <button type="button" class="btn btn-primary"> Print </button>
                                                     </div>
@@ -372,7 +397,9 @@
                             `;
                             modal.style.display="block";
                           }
-                        
+                          function closeModal(){
+      modal.style.display = "none";
+    }
 
                       </script>
             <script src="../assets/js/pages-account-settings-account.js"></script>
