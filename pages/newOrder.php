@@ -157,7 +157,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product 4</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="select4" class="form-select" name="product4Name">
+                                <select id="select4" class="form-select" name="product4Name" onchange="updateData()">
                                   <option>Choose Products</option> <?php
                                   $a = 1;
                                   $query = mysqli_query($conn, 'select * from `products` ');
@@ -219,21 +219,22 @@
                       
                       <script>
                           var modal = document.getElementById('modalContainer');
+                          let select1Option = document.getElementById("select1");
+                           let select2Option = document.getElementById("select2");
+                           let select3Option = document.getElementById("select3");
+                           let select4Option = document.getElementById("select4");
+                          
                           function getData(){
-
                             select1 = document.getElementById("select1").value;
                             select2 = document.getElementById("select2").value;
                             select3 = document.getElementById("select3").value;
                             select4 = document.getElementById("select4").value;
-
-                            // GET QUANTITIES
                             Qty1 = document.getElementById('Quantity1').value.trim();
                             Qty2 = document.getElementById('Quantity2').value.trim();
                             Qty3 = document.getElementById('Quantity3').value.trim();
                             Qty4 = document.getElementById('Quantity4').value.trim();
-
-                            const Qty = 2;
-                            const data = {
+                            var Qty = 2;
+                            var data = {
                               product1 : {
                                 select1,
                                 Qty1
@@ -251,6 +252,7 @@
                                 Qty4
                               }
                             };
+
 
                             if(data.product1.Qty1 == ''){
                               data.product1.Qty1 = '-';
@@ -284,6 +286,58 @@
                             var seconds = date.getSeconds();
                             var minute = date.getMinutes();
                             var hour = date.getHours();
+
+                            var prices = [];
+
+                            // $.ajax({
+                            //   type: "POST",
+                            //   url: "receiptData.php",
+                            //   data: { action : "get_price" },
+                            //   dataType: "json",
+                            //   success : (result)=>{
+                            //     prices.push(result)
+                            //   },
+                            //   error : (xhr, status, error)=>{
+                            //     console.log(xhr.responseText);
+                            //   }
+                            // })
+                            // console.log(prices);
+                            
+                            function updateData(){
+                                
+                            let selected1Value = '';
+                            option1Value.addEventListener('change', (event)=>{
+                              var selectdOption = event.target.options[event.target.selectedIndex];
+                               selected1Value = selectdOption.value;
+                            })
+                            console.log(selected1Value);
+                          }
+                          console.log(select1Option)
+
+                          // function getData(id){
+                          //     var formData = new FormData();
+                          //     formData.append('id', id);
+                          //     var xhr = new XMLHttpRequest();
+                          //     xhr.open('POST', 'data.php', true);
+                          //     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                          //     xhr.onload = ()=>{
+                          //         if (xhr.status === 200){
+                          //             try {
+                          //                 var data = JSON.parse(xhr.responseText);
+                          //                 displayDataModal(data)
+                          //             } catch (error) {
+                          //               console.log("Error passing the data: " + error)
+                          //               console.log('Response text: ' + xhr.statusText)  
+                          //             }
+                          //         }else{
+                          //             console.log('Error ' + xhr.status + ": " + xhr.statusText)
+                          //         }
+                          //     };
+                          //     xhr.onerror = ()=>{
+                          //         console.log('Error sending request')
+                          //     }
+                          //     xhr.send(formData);
+                          //  }
                             
                             modal.innerHTML = `
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -325,7 +379,7 @@
                                                                   <tr>
                                                                       <td> ${data.product1.Qty1} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product1.select1} </strong></td>
-                                                                      <td> 300.00 </td>
+                                                                      <td> 5000 </td>
                                                                   </tr>
                                                                   <tr>
                                                                       <td> ${data.product2.Qty2} </td>
@@ -388,7 +442,7 @@
                                                       <button type="button" class="btn btn-outline-secondary" onclick="closeModal()">
                                                         Save Receipt
                                                       </button>
-                                                      <button type="button" class="btn btn-primary"> Print </button>
+                                                      <button type="button" class="btn btn-primary" id="print-btn" onclick="printContent()"> Print </button>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -396,10 +450,24 @@
                                                 </div>
                             `;
                             modal.style.display="block";
-                          }
+}
                           function closeModal(){
       modal.style.display = "none";
     }
+
+    function printContent(){
+      const btn = document.getElementById('print-btn');
+      let element = document.getElementById('modalContainer');
+      let html = element.innerHTML;
+      let new_window = window.open('', 'print', 'height=650; width=900');
+      new_window.document.write('<link rel="stylesheet" href="../assets/css/receipt.css">' );
+      new_window.document.write('<link rel="stylesheet" href="../assets/css/receiptModal.css">' );
+      new_window.document.write('<link rel="stylesheet" href="../assets/vendor/css/core.css">' );
+      new_window.document.write('<style>button{display: none; }</style>');
+      new_window.document.write(html);
+      new_window.print();
+ };
+
 
                       </script>
             <script src="../assets/js/pages-account-settings-account.js"></script>
