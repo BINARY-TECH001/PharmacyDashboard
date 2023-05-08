@@ -157,7 +157,7 @@
                             <label class="form-label" for="basic-icon-default-company">Product 4</label>
                               <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i class="bx bx-sort-a-z"></i></span>
-                                <select id="select4" class="form-select" name="product4Name" onchange="updateData()">
+                                <select id="select4" class="form-select" name="product4Name" >
                                   <option>Choose Products</option> <?php
                                   $a = 1;
                                   $query = mysqli_query($conn, 'select * from `products` ');
@@ -217,128 +217,134 @@
             </div>
             <!-- / Content -->
                       
-                      <script>
-                          var modal = document.getElementById('modalContainer');
-                          let select1Option = document.getElementById("select1");
-                           let select2Option = document.getElementById("select2");
-                           let select3Option = document.getElementById("select3");
-                           let select4Option = document.getElementById("select4");
-                          
-                          function getData(){
-                            select1 = document.getElementById("select1").value;
-                            select2 = document.getElementById("select2").value;
-                            select3 = document.getElementById("select3").value;
-                            select4 = document.getElementById("select4").value;
-                            Qty1 = document.getElementById('Quantity1').value.trim();
-                            Qty2 = document.getElementById('Quantity2').value.trim();
-                            Qty3 = document.getElementById('Quantity3').value.trim();
-                            Qty4 = document.getElementById('Quantity4').value.trim();
-                            var Qty = 2;
-                            var data = {
-                              product1 : {
-                                select1,
-                                Qty1
-                              },
-                              product2 : {
-                                select2,
-                                Qty2
-                              },
-                              product3 : {
-                                select3,
-                                Qty3
-                              },
-                              product4 : {
-                                select4,
-                                Qty4
-                              }
-                            };
+<script>
+  var modal = document.getElementById('modalContainer');
+  let select1Option = document.getElementById("select1");
+   let select2Option = document.getElementById("select2");
+   let select3Option = document.getElementById("select3");
+   let select4Option = document.getElementById("select4");
+
+  function getData(){
+    select1 = document.getElementById("select1").value;
+    select2 = document.getElementById("select2").value;
+    select3 = document.getElementById("select3").value;
+    select4 = document.getElementById("select4").value;
+    Qty1 = document.getElementById('Quantity1').value.trim();
+    Qty2 = document.getElementById('Quantity2').value.trim();
+    Qty3 = document.getElementById('Quantity3').value.trim();
+    Qty4 = document.getElementById('Quantity4').value.trim();
+    var Qty = 2;
+    var data = {
+      product1 : {
+        select1,
+        Qty1,
+      },
+      product2 : {
+        select2,
+        Qty2,
+      },
+      product3 : {
+        select3,
+        Qty3,
+      },
+      product4 : {
+        select4,
+        Qty4,
+      }
+    };
 
 
-                            if(data.product1.Qty1 == ''){
-                              data.product1.Qty1 = '-';
-                            }
-                            if(data.product2.Qty2 == ''){
-                              data.product2.Qty2 = '-';
-                            }
-                            if(data.product3.Qty3 == ''){
-                              data.product3.Qty3 = '-';
-                            }
-                            if(data.product4.Qty4 == ''){
-                              data.product4.Qty4 = '-';
-                            }
+    if(data.product1.Qty1 == ''){
+      data.product1.Qty1 = '-';
+    }
+    if(data.product2.Qty2 == ''){
+      data.product2.Qty2 = '-';
+    }
+    if(data.product3.Qty3 == ''){
+      data.product3.Qty3 = '-';
+    }
+    if(data.product4.Qty4 == ''){
+      data.product4.Qty4 = '-';
+    }
+    // CHECK THE PRODUCT
+    if(data.product1.select1 == 'Choose Products'){
+      data.product1.select1 = '-';
+    }
+    if(data.product2.select2 == 'Choose Products'){
+      data.product2.select2 = '-';
+    }
+    if(data.product3.select3 == 'Choose Products'){
+      data.product3.select3 = '-';
+    }
+    if(data.product4.select4 == 'Choose Products'){
+      data.product4.select4 = '-';
+    }
+      var rand = Math.floor(Math.random() * 1 );
+      var date = new Date();
+      var seconds = date.getSeconds();
+      var minute = date.getMinutes();
+      var hour = date.getHours();
+      var prices = [];
 
-                            // CHECK THE PRODUCT
-                            if(data.product1.select1 == 'Choose Products'){
-                              data.product1.select1 = '-';
-                            }
-                            if(data.product2.select2 == 'Choose Products'){
-                              data.product2.select2 = '-';
-                            }
-                            if(data.product3.select3 == 'Choose Products'){
-                              data.product3.select3 = '-';
-                            }
-                            if(data.product4.select4 == 'Choose Products'){
-                              data.product4.select4 = '-';
-                            }
 
-                            var rand = Math.floor(Math.random() * 1 );
-                            var date = new Date();
-                            var seconds = date.getSeconds();
-                            var minute = date.getMinutes();
-                            var hour = date.getHours();
+    var productNames = [];
+    const selectElements = document.querySelectorAll("select");
+    for (var i = 0; i < selectElements.length; i++){
+      var selectedOption = selectElements[i].options[selectElements[i].selectedIndex];
+      productNames.push(selectedOption.value);
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+      if (this.readyState === 4 && this.status === 200){
+        result = JSON.parse(this.responseText);
+       showValue(result);
+      }else if (this.readyState === 4 && this.status !== 200){
+        console.log('Error:', this.status);
+      }
+    };
+    xhr.open('POST', 'getProductPrice.php');
+    var jsonData = JSON.stringify({ ...productNames });
+    console.log(jsonData);
+    console.log(typeof(jsonData));
+    xhr.send(jsonData);
 
-                            var prices = [];
+    function showValue(result){
+      let priceTag1 = document.getElementById('priceTag1');
+      let priceTag2 = document.getElementById('priceTag2');
+      let priceTag3 = document.getElementById('priceTag3');
+      let priceTag4 = document.getElementById('priceTag4');
 
-                            // $.ajax({
-                            //   type: "POST",
-                            //   url: "receiptData.php",
-                            //   data: { action : "get_price" },
-                            //   dataType: "json",
-                            //   success : (result)=>{
-                            //     prices.push(result)
-                            //   },
-                            //   error : (xhr, status, error)=>{
-                            //     console.log(xhr.responseText);
-                            //   }
-                            // })
-                            // console.log(prices);
+      for (let key in result){
+        if (data.product1.select1 === key){
+          let price1Cal = result[key];
+          var price1Total = price1Cal * data.product1.Qty1;
+          // data.product1.price1 = price1Total;
+          priceTag1.innerHTML = price1Total;
+        }
+        if (data.product2.select2 === key){
+          let price2Cal = result[key];
+          var price2Total = price2Cal * data.product2.Qty2;
+          priceTag2.innerHTML = price2Total;
+          // data.product2.price2 = price2Total;
+        }
+        if (data.product3.select3 === key){
+          let price3Cal = result[key];
+          var price3Total = price3Cal * data.product3.Qty3;
+          priceTag3.innerHTML = price3Total;
+          // data.product3.price3 = price3Total;
+        }
+        if (data.product4.select4 === key){
+          let price4Cal = result[key];
+          var price4Total = price4Cal * data.product4.Qty4;
+          priceTag4.innerHTML = price4Total;
+          // data.product4.price4 = price4Total;
+        }
+      }
+    }
+
+    
                             
-                            function updateData(){
-                                
-                            let selected1Value = '';
-                            option1Value.addEventListener('change', (event)=>{
-                              var selectdOption = event.target.options[event.target.selectedIndex];
-                               selected1Value = selectdOption.value;
-                            })
-                            console.log(selected1Value);
-                          }
-                          console.log(select1Option)
 
-                          // function getData(id){
-                          //     var formData = new FormData();
-                          //     formData.append('id', id);
-                          //     var xhr = new XMLHttpRequest();
-                          //     xhr.open('POST', 'data.php', true);
-                          //     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                          //     xhr.onload = ()=>{
-                          //         if (xhr.status === 200){
-                          //             try {
-                          //                 var data = JSON.parse(xhr.responseText);
-                          //                 displayDataModal(data)
-                          //             } catch (error) {
-                          //               console.log("Error passing the data: " + error)
-                          //               console.log('Response text: ' + xhr.statusText)  
-                          //             }
-                          //         }else{
-                          //             console.log('Error ' + xhr.status + ": " + xhr.statusText)
-                          //         }
-                          //     };
-                          //     xhr.onerror = ()=>{
-                          //         console.log('Error sending request')
-                          //     }
-                          //     xhr.send(formData);
-                          //  }
-                            
                             modal.innerHTML = `
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
@@ -355,7 +361,7 @@
                                                       <div class="pharmacyDetails">
                                                           <h2> AL MISKEEN PHARMS LTD </h2>
                                                           <span> BESIDE GRAMMAR SCHOOL, SANGO SAKI </span>
-                                                          <span> AL MISKEENpharma2016@gmail.com | <span> 08105875485 </span></span>
+                                                          <span> AL MISKEENpharma2036@gmail.com | <span> 08105875485 </span></span>
                                                       </div>
                       
                                                       <div class="receiptNo">
@@ -367,7 +373,7 @@
                                                       </div>
                                                           <div class="card">
                                                               <div class="table-responsive text-nowrap">
-                                                                <table class="table">
+                                                                <table class="table" id="table">
                                                                   <thead>
                                                                     <tr>
                                                                       <th> Quantity</th>
@@ -375,26 +381,26 @@
                                                                       <th>Price</th>
                                                                     </tr>
                                                                   </thead>
-                                                                  <tbody class="">
-                                                                  <tr>
+                                                                  <tbody class="" id="modal-body">
+                                                                  <tr id="row">
                                                                       <td> ${data.product1.Qty1} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product1.select1} </strong></td>
-                                                                      <td> 5000 </td>
+                                                                      <td id='priceTag1'> 00.00 </td>
                                                                   </tr>
                                                                   <tr>
                                                                       <td> ${data.product2.Qty2} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product2.select2}  </strong></td>
-                                                                      <td> 300.00 </td>
+                                                                      <td id='priceTag2'> 00.00 </td>
                                                                   </tr>
                                                                   <tr>
                                                                       <td> ${data.product3.Qty3} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product3.select3} </strong></td>
-                                                                      <td> 300.00 </td>
+                                                                      <td id='priceTag3'> 00.00 </td>
                                                                   </tr>
                                                                   <tr>
                                                                       <td> ${data.product4.Qty4} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product4.select4} </strong></td>
-                                                                      <td> 300.00 </td>
+                                                                      <td id='priceTag4'> 00.00 </td>
                                                                   </tr>
                                                                   </tbody>
                                                                 </table>
@@ -403,7 +409,7 @@
                       
                                                       <div class="discount">
                                                           <p>Discount: <b>0.00</b></p>
-                                                          <p>Sub-total: <b>1, 160.00</b></p>
+                                                          <p id="subTotal">Sub-total: <b>1, 160.00</b></p>
                                                       </div>
                       
                                                       <div class="totalPriceCon">
