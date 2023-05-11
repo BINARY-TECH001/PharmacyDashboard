@@ -223,6 +223,11 @@
    let select2Option = document.getElementById("select2");
    let select3Option = document.getElementById("select3");
    let select4Option = document.getElementById("select4");
+   let totalPrice1 = 0;
+   let totalPrice2 = 0;
+   let totalPrice3 = 0;
+   let totalPrice4 = 0;
+   let totalPrice = 0;
 
   function getData(){
     select1 = document.getElementById("select1").value;
@@ -233,7 +238,8 @@
     Qty2 = document.getElementById('Quantity2').value.trim();
     Qty3 = document.getElementById('Quantity3').value.trim();
     Qty4 = document.getElementById('Quantity4').value.trim();
-    var Qty = 2;
+
+    
     var data = {
       product1 : {
         select1,
@@ -279,15 +285,15 @@
     if(data.product4.select4 == 'Choose Products'){
       data.product4.select4 = '-';
     }
-      var rand = Math.floor(Math.random() * 1 );
+    var rand = Math.floor(Math.random() * 1 );
       var date = new Date();
       var seconds = date.getSeconds();
       var minute = date.getMinutes();
       var hour = date.getHours();
       var prices = [];
 
-
-    var productNames = [];
+      
+      var productNames = [];
     const selectElements = document.querySelectorAll("select");
     for (var i = 0; i < selectElements.length; i++){
       var selectedOption = selectElements[i].options[selectElements[i].selectedIndex];
@@ -314,32 +320,45 @@
       let priceTag3 = document.getElementById('priceTag3');
       let priceTag4 = document.getElementById('priceTag4');
 
+      const totalPriceTag = document.getElementById("totalPriceTag");
+      const totalSubPriceTag = document.getElementById('totalSubTag');
+      const cashPayment = document.getElementById("cashPayment");
+      
       for (let key in result){
         if (data.product1.select1 === key){
           let price1Cal = result[key];
           var price1Total = price1Cal * data.product1.Qty1;
-          // data.product1.price1 = price1Total;
           priceTag1.innerHTML = price1Total;
+          totalPrice1 = price1Total;
         }
         if (data.product2.select2 === key){
           let price2Cal = result[key];
           var price2Total = price2Cal * data.product2.Qty2;
           priceTag2.innerHTML = price2Total;
-          // data.product2.price2 = price2Total;
+          totalPrice2 = price2Total;
         }
         if (data.product3.select3 === key){
           let price3Cal = result[key];
           var price3Total = price3Cal * data.product3.Qty3;
           priceTag3.innerHTML = price3Total;
-          // data.product3.price3 = price3Total;
+          totalPrice3 = price3Total;
         }
         if (data.product4.select4 === key){
           let price4Cal = result[key];
           var price4Total = price4Cal * data.product4.Qty4;
           priceTag4.innerHTML = price4Total;
-          // data.product4.price4 = price4Total;
+          price4Total = price4Total;
         }
       }
+      totalPrice = totalPrice1 + totalPrice2 + totalPrice3 + totalPrice4;
+      if (totalPrice == 0){
+        totalPriceTag.innerHTML += "00.0"
+        totalSubPriceTag.innerHTML += "00.00"
+        cashPayment.innerHTML += "00.00"
+      }
+      totalPriceTag.innerHTML += totalPrice;
+      totalSubPriceTag.innerHTML += totalPrice;
+      cashPayment.innerHTML += totalPrice;
     }
 
     
@@ -409,11 +428,11 @@
                       
                                                       <div class="discount">
                                                           <p>Discount: <b>0.00</b></p>
-                                                          <p id="subTotal">Sub-total: <b>1, 160.00</b></p>
+                                                          <p>Sub-total: <b id="totalSubTag"></b></p>
                                                       </div>
                       
                                                       <div class="totalPriceCon">
-                                                          <span> TOTAL: <b>1,160.00</b> </span>
+                                                          <span> TOTAL: <strong id="totalPriceTag"></strong> </span>
                                                           <span> VAT: @7.5% </span>
                                                       </div>
                       
@@ -430,12 +449,9 @@
                                                           </div>
                                                           <div class="info">
                                                               <span> Cash Payment </span>
-                                                              <span> 1,160.00 </span>
+                                                              <span id="cashPayment">  </span>
                                                           </div>
-                                                          <div class="info">
-                                                              <span> Ledger Balance </span>
-                                                              <span> 0.00 </span>
-                                                          </div>
+                                                         
                                                       </div>
                       
                                                       <div class="claim">
