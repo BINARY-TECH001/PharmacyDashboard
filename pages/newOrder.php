@@ -223,11 +223,17 @@
    let select2Option = document.getElementById("select2");
    let select3Option = document.getElementById("select3");
    let select4Option = document.getElementById("select4");
+
+   
    let totalPrice1 = 0;
    let totalPrice2 = 0;
    let totalPrice3 = 0;
    let totalPrice4 = 0;
    let totalPrice = 0;
+
+   function addZero(value){
+    return value > 10 ? value : `0${value}`
+   }
 
   function getData(){
     select1 = document.getElementById("select1").value;
@@ -287,9 +293,12 @@
     }
     var rand = Math.floor(Math.random() * 1 );
       var date = new Date();
-      var seconds = date.getSeconds();
-      var minute = date.getMinutes();
-      var hour = date.getHours();
+      var secondS = date.getSeconds();
+      const seconds = addZero(secondS);
+      var minutE = date.getMinutes();
+      const minute = addZero(minutE);
+      var houR = date.getHours();
+      const hour = addZero(houR);
       var prices = [];
 
       
@@ -309,9 +318,7 @@
       }
     };
     xhr.open('POST', 'getProductPrice.php');
-    var jsonData = JSON.stringify({ ...productNames });
-    console.log(jsonData);
-    console.log(typeof(jsonData));
+    var jsonData = JSON.stringify({ ...productNames }); 
     xhr.send(jsonData);
 
     function showValue(result){
@@ -353,16 +360,14 @@
       totalPrice = totalPrice1 + totalPrice2 + totalPrice3 + totalPrice4;
       if (totalPrice == 0){
         totalPriceTag.innerHTML += "00.0"
-        totalSubPriceTag.innerHTML += "00.00"
+        totalSubPriceTag.innerHTML += "00.0"
         cashPayment.innerHTML += "00.00"
       }
       totalPriceTag.innerHTML += totalPrice;
       totalSubPriceTag.innerHTML += totalPrice;
       cashPayment.innerHTML += totalPrice;
-    }
-
+    }          
     
-                            
 
                             modal.innerHTML = `
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -380,7 +385,7 @@
                                                       <div class="pharmacyDetails">
                                                           <h2> AL MISKEEN PHARMS LTD </h2>
                                                           <span> BESIDE GRAMMAR SCHOOL, SANGO SAKI </span>
-                                                          <span> AL MISKEENpharma2036@gmail.com | <span> 08105875485 </span></span>
+                                                          <span> almiskeenpharma2036@gmail.com | <span> 08105875485 </span></span>
                                                       </div>
                       
                                                       <div class="receiptNo">
@@ -401,22 +406,22 @@
                                                                     </tr>
                                                                   </thead>
                                                                   <tbody class="" id="modal-body">
-                                                                  <tr id="row">
+                                                                  <tr id="row1">
                                                                       <td> ${data.product1.Qty1} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product1.select1} </strong></td>
                                                                       <td id='priceTag1'> 00.00 </td>
                                                                   </tr>
-                                                                  <tr>
+                                                                  <tr id="row2">
                                                                       <td> ${data.product2.Qty2} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product2.select2}  </strong></td>
                                                                       <td id='priceTag2'> 00.00 </td>
                                                                   </tr>
-                                                                  <tr>
+                                                                  <tr id="row3">
                                                                       <td> ${data.product3.Qty3} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product3.select3} </strong></td>
                                                                       <td id='priceTag3'> 00.00 </td>
                                                                   </tr>
-                                                                  <tr>
+                                                                  <tr id="row4">
                                                                       <td> ${data.product4.Qty4} </td>
                                                                       <td><i class="fab fa-angular fa-lg text-danger"></i> <strong> ${data.product4.select4} </strong></td>
                                                                       <td id='priceTag4'> 00.00 </td>
@@ -428,11 +433,11 @@
                       
                                                       <div class="discount">
                                                           <p>Discount: <b>0.00</b></p>
-                                                          <p>Sub-total: <b id="totalSubTag"></b></p>
+                                                          <p>Sub-total: <b id="totalSubTag">#</b></p>
                                                       </div>
                       
                                                       <div class="totalPriceCon">
-                                                          <span> TOTAL: <strong id="totalPriceTag"></strong> </span>
+                                                          <span> TOTAL: <strong id="totalPriceTag">#</strong> </span>
                                                           <span> VAT: @7.5% </span>
                                                       </div>
                       
@@ -449,7 +454,7 @@
                                                           </div>
                                                           <div class="info">
                                                               <span> Cash Payment </span>
-                                                              <span id="cashPayment">  </span>
+                                                              <span id="cashPayment"> <b>#</b></span>
                                                           </div>
                                                          
                                                       </div>
@@ -488,6 +493,14 @@
       new_window.document.write('<style>button{display: none; }</style>');
       new_window.document.write(html);
       new_window.print();
+
+      var productNames = [];
+    const selectElements = document.querySelectorAll("select");
+    for (var i = 0; i < selectElements.length; i++){
+      var selectedOption = selectElements[i].options[selectElements[i].selectedIndex];
+      productNames.push(selectedOption.value);
+    }
+    console.log(productNames);
  };
 
 

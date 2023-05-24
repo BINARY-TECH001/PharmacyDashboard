@@ -1,10 +1,21 @@
 
+<?php 
+// FUNCTION TO CHECK and VALIDATE USER INPUTS IN A FORM
+    function validateInpput($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+?>
+
 <?php
 // FUNCTION TO VALIDATE LOGIN STARTS HERE
 $conn = new mysqli('localhost','root','','pharmacy');
 if ($conn -> connect_error){
     die("Connection Failed! " . $conn->connect_error);
 }
+
 // FUNCTION TO VALIDATE AND LOGIN USER
 function saveLoginDetails(){
     global $conn;
@@ -316,4 +327,3 @@ function addOrder(){
     }
 }
 ?>
-
