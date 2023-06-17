@@ -327,7 +327,7 @@
       let priceTag3 = document.getElementById('priceTag3');
       let priceTag4 = document.getElementById('priceTag4');
 
-      const totalPriceTag = document.getElementById("totalPriceTag");
+      const totalPriceTag = document.getElementById("totalPriceTag");kkkkk
       const totalSubPriceTag = document.getElementById('totalSubTag');
       const cashPayment = document.getElementById("cashPayment");
       
